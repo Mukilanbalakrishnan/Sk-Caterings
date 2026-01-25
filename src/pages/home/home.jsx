@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSection from './HeroSection';
+import HeroSection from './herosection';
 import AboutSection from './aboutsection';
 import FounderSection from './foundersection';
 import ServicesSection from './servicessection';
