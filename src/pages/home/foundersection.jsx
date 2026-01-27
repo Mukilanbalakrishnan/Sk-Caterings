@@ -313,6 +313,8 @@ const FounderSection = () => {
   const [isChefHovered, setIsChefHovered] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
+  const animationsEnabled = !isMobile;
+
 
 React.useEffect(() => {
   const check = () => setIsMobile(window.innerWidth < 768);
@@ -338,10 +340,11 @@ React.useEffect(() => {
 
   return (
     <motion.section 
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+  variants={isMobile ? undefined : containerVariants}
+  initial={isMobile ? false : "hidden"}
+  whileInView={isMobile ? false : "visible"}
+  viewport={isMobile ? undefined : { once: true, amount: 0.2 }}
+
       className="relative w-full min-h-screen py-20 md:py-32 bg-gradient-to-br from-[#1c0505] via-[#2b0a0a] to-[#120303] overflow-hidden"
     >
       
