@@ -311,6 +311,16 @@ const FounderSection = () => {
   
   // ✅ ADDED: State to explicitly track if the chef image is hovered
   const [isChefHovered, setIsChefHovered] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+React.useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 768);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
+
   
   const quotes = [
     "Cooking is not just about ingredients; it is about the soul you put into it.",
@@ -339,11 +349,12 @@ const FounderSection = () => {
       
       {/* Animated Mesh Gradient with Movement */}
       <motion.div 
-        animate={{ 
-          backgroundPosition: ["0% 0%", "100% 100%"],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ duration: 15, repeat: Infinity }}
+       animate={isMobile ? { opacity: 0.25 } : { 
+  backgroundPosition: ["0% 0%", "100% 100%"],
+  opacity: [0.2, 0.4, 0.2]
+}}
+transition={isMobile ? {} : { duration: 15, repeat: Infinity }}
+
         className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-red-900/10 to-orange-900/10 bg-[size:400%_400%]"
       />
       
@@ -354,7 +365,8 @@ const FounderSection = () => {
             key={i}
             custom={i}
             variants={floatingVariants}
-            animate="animate"
+            animate={isMobile ? false : "animate"}
+
             className="absolute w-[1px] h-[1px] bg-orange-500/20 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
@@ -433,7 +445,8 @@ const FounderSection = () => {
               <motion.h4
                 variants={textGlowVariants}
                 initial="initial"
-                animate="animate"
+                animate={isMobile ? false : "animate"}
+
                 className="font-mono text-orange-500 text-lg mb-4 tracking-[0.5em]"
               >
                 ✦ MASTER CHEF ✦
@@ -474,10 +487,11 @@ const FounderSection = () => {
 
             {/* Enhanced Interactive Quote Card */}
             {/* Simple Vision Text Block */}
+{/* Simple Vision Text Block */}
 <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
+  initial={isMobile ? false : { opacity: 0, y: 20 }}
+  whileInView={isMobile ? false : { opacity: 1, y: 0 }}
+  viewport={isMobile ? undefined : { once: true }}
   transition={{ duration: 0.6, ease: "easeOut" }}
   className="mt-6 max-w-xl"
 >
@@ -488,6 +502,7 @@ const FounderSection = () => {
     Our journey is driven by authenticity, creativity, and love for the art.
   </p>
 </motion.div>
+
 
           </motion.div>
 
