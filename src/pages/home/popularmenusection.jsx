@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from "react-router-dom";
+
 
 // --- DATA ---
 const popularMenus = [
@@ -191,13 +193,16 @@ const PopularMenuSection = () => {
                       </div>
 
                       {/* CTA Button */}
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 py-2 bg-white text-black font-bold rounded-full flex items-center gap-2 hover:bg-gray-200 transition-colors shadow-xl"
-                      >
-                        View Full Menu <span>→</span>
-                      </motion.button>
+                      <Link to="/menu">
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="px-6 py-2 bg-white text-black font-bold rounded-full flex items-center gap-2 hover:bg-gray-200 transition-colors shadow-xl"
+  >
+    View Full Menu <span>→</span>
+  </motion.button>
+</Link>
+
                     </motion.div>
                   )}
                 </AnimatePresence>

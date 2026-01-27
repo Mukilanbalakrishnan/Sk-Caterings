@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from "react-router-dom";
+
 
 // --- SERVICE DATA (5 Items) ---
 const services = [
@@ -323,36 +325,39 @@ const ServiceCard = ({ service, index }) => {
         </motion.div>
         
         {/* Interactive Button */}
-        <motion.button 
-          className="relative px-8 py-3 border border-red-900/50 text-orange-200 uppercase tracking-widest text-xs overflow-hidden group"
-          whileHover={{ 
-            borderColor: "#d97706",
-            color: "#fbbf24"
-          }}
-          whileTap={{ scale: 0.95 }}
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
-        >
-          {/* Button Shine Effect */}
-          <motion.span
-            initial={{ x: "-100%" }}
-            whileHover={{ x: "100%" }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-600/20 to-transparent"
-          />
-          <span className="relative z-10 flex items-center gap-2">
-            Discover Details
-            <motion.span
-              animate={isHovered ? {
-                x: [0, 5, 0],
-                rotate: [0, 90, 0]
-              } : {}}
-              transition={{ duration: 0.5 }}
-            >
-              →
-            </motion.span>
-          </span>
-        </motion.button>
+        <Link to="/services">
+  <motion.button 
+    className="relative px-8 py-3 border border-red-900/50 text-orange-200 uppercase tracking-widest text-xs overflow-hidden group"
+    whileHover={{ 
+      borderColor: "#d97706",
+      color: "#fbbf24"
+    }}
+    whileTap={{ scale: 0.95 }}
+    onHoverStart={() => setIsHovered(true)}
+    onHoverEnd={() => setIsHovered(false)}
+  >
+    {/* Button Shine Effect */}
+    <motion.span
+      initial={{ x: "-100%" }}
+      whileHover={{ x: "100%" }}
+      transition={{ duration: 0.5 }}
+      className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-600/20 to-transparent"
+    />
+    <span className="relative z-10 flex items-center gap-2">
+      Discover Details
+      <motion.span
+        animate={isHovered ? {
+          x: [0, 5, 0],
+          rotate: [0, 90, 0]
+        } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        →
+      </motion.span>
+    </span>
+  </motion.button>
+</Link>
+
       </div>
 
       {/* Animated Connection Line (Mobile) */}

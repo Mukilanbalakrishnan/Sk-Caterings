@@ -428,7 +428,7 @@ const AboutSection = () => {
               {[
                 "At SK Caterings, we understand that food is more than just sustenance; it is an experience. Since ",
                 "2015",
-                ", we have been crafting culinary masterpieces that blend traditional heritage with modern elegance."
+                "we have been crafting culinary masterpieces that blend traditional heritage with modern elegance."
               ].map((part, i) => (
                 <motion.p
                   key={i}

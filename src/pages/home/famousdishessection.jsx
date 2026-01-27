@@ -148,16 +148,7 @@ const FamousDishesSection = () => {
           ))}
         </div>
 
-        {/* --- VIEW FULL MENU BUTTON --- */}
-        <div className="text-center mt-20">
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-black text-white rounded-full text-sm font-bold uppercase tracking-widest hover:bg-yellow-600 transition-colors shadow-xl"
-          >
-            View Full Menu
-          </motion.button>
-        </div>
+        
 
       </div>
     </section>
