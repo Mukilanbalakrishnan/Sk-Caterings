@@ -473,207 +473,22 @@ const FounderSection = () => {
             </motion.div>
 
             {/* Enhanced Interactive Quote Card */}
-            <motion.div 
-              drag
-              dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              dragElastic={0.1}
-              whileHover={{ 
-                scale: 1.02, 
-                boxShadow: "0 25px 50px rgba(249, 115, 22, 0.15)",
-                transition: { type: "spring", stiffness: 300 }
-              }}
-              className="relative p-8 md:p-12 bg-gradient-to-br from-[#3d0e0e]/90 to-[#220505]/90 backdrop-blur-xl border border-orange-900/30 rounded-2xl shadow-2xl cursor-grab active:cursor-grabbing"
-            >
-              {/* Animated Corner Decorations */}
-              {["-top-2 -left-2", "-top-2 -right-2", "-bottom-2 -left-2", "-bottom-2 -right-2"].map((position, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    rotate: [0, 90, 0],
-                    scale: [1, 1.2, 1]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.5
-                  }}
-                  className={`absolute ${position} w-4 h-4 border-2 border-orange-600/50 rounded-lg`}
-                  style={{
-                    borderTopColor: i === 0 || i === 1 ? "#ea580c" : "transparent",
-                    borderRightColor: i === 1 || i === 3 ? "#ea580c" : "transparent",
-                    borderBottomColor: i === 2 || i === 3 ? "#ea580c" : "transparent",
-                    borderLeftColor: i === 0 || i === 2 ? "#ea580c" : "transparent"
-                  }}
-                />
-              ))}
-              
-              {/* Quote Navigation with Enhanced Animations */}
-              <div className="flex justify-between items-center mb-6">
-                <motion.button
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: -90,
-                    backgroundColor: "rgba(249, 115, 22, 0.2)"
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setActiveQuote((prev) => (prev - 1 + quotes.length) % quotes.length)}
-                  className="w-10 h-10 rounded-full bg-orange-900/30 flex items-center justify-center text-orange-500 hover:bg-orange-900/50 transition-colors"
-                >
-                  ←
-                </motion.button>
-                
-                <div className="flex gap-2">
-                  {quotes.map((_, idx) => (
-                    <motion.button
-                      key={idx}
-                      onClick={() => setActiveQuote(idx)}
-                      whileHover={{ scale: 1.2 }}
-                      whileTap={{ scale: 0.8 }}
-                      animate={{
-                        scale: idx === activeQuote ? [1, 1.3, 1] : 1,
-                        backgroundColor: idx === activeQuote ? "#f97316" : "rgba(249, 115, 22, 0.3)"
-                      }}
-                      transition={{
-                        scale: { duration: 2, repeat: Infinity },
-                        backgroundColor: { duration: 0.3 }
-                      }}
-                      className="w-2 h-2 rounded-full transition-colors"
-                    />
-                  ))}
-                </div>
-                
-                <motion.button
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: 90,
-                    backgroundColor: "rgba(249, 115, 22, 0.2)"
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setActiveQuote((prev) => (prev + 1) % quotes.length)}
-                  className="w-10 h-10 rounded-full bg-orange-900/30 flex items-center justify-center text-orange-500 hover:bg-orange-900/50 transition-colors"
-                >
-                  →
-                </motion.button>
-              </div>
-              
-              {/* Enhanced Animated Quote Text */}
-              <div className="min-h-[120px] flex items-center">
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={activeQuote}
-                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                    transition={{ duration: 0.5, type: "spring" }}
-                    className="text-gray-300 text-xl md:text-2xl leading-relaxed font-light italic"
-                  >
-                    "{quotes[activeQuote]}"
-                  </motion.p>
-                </AnimatePresence>
-              </div>
-              
-              {/* Enhanced Interactive Toggle for Details */}
-              <motion.div className="mt-8">
-                <motion.button
-                  whileHover={{ scale: 1.05, x: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setShowDetails(!showDetails)}
-                  className="flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors"
-                >
-                  <motion.span
-                    animate={{ rotate: showDetails ? 180 : 0 }}
-                    transition={{ duration: 0.3, type: "spring" }}
-                  >
-                    ▼
-                  </motion.span>
-                  {showDetails ? "Hide Journey" : "Explore Journey"}
-                </motion.button>
-                
-                <AnimatePresence>
-                  {showDetails && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, type: "spring" }}
-                      className="overflow-hidden mt-4"
-                    >
-                      <div className="grid grid-cols-2 gap-4">
-                        {achievements.map((achievement, idx) => (
-                          <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1, type: "spring" }}
-                            whileHover={{ 
-                              y: -5,
-                              scale: 1.02,
-                              backgroundColor: "rgba(249, 115, 22, 0.15)"
-                            }}
-                            className="p-4 bg-orange-900/10 rounded-lg border border-orange-900/20 cursor-pointer"
-                          >
-                            <motion.div 
-                              className="font-bold text-orange-500 text-lg"
-                              whileHover={{ scale: 1.1 }}
-                            >
-                              {achievement.year}
-                            </motion.div>
-                            <div className="font-semibold text-white">{achievement.title}</div>
-                            <div className="text-sm text-gray-400">{achievement.desc}</div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </motion.div>
-            
-            {/* Enhanced CTA Button with Magnetic Effect */}
-            <motion.div className="mt-12 relative group">
-              <motion.button
-                whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
-                whileTap={{ scale: 0.95 }}
-                className="relative px-10 py-5 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white font-semibold rounded-full text-lg overflow-hidden group"
-              >
-                {/* Animated Gradient Background */}
-                <motion.div
-                  animate={{ 
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 bg-[size:200%_100%]"
-                />
-                
-                {/* Shimmer Effect */}
-                <motion.span
-                  animate={{ x: ["-100%", "100%"] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                />
-                
-                <span className="relative z-10 flex items-center gap-3">
-                  Discover The Art
-                  <motion.span
-                    animate={{ 
-                      x: [0, 5, 0],
-                      rotate: [0, 10, 0]
-                    }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    →
-                  </motion.span>
-                </span>
-              </motion.button>
-              
-              {/* Enhanced Button Glow */}
-              <motion.div
-                variants={pulseGlowVariants}
-                initial="initial"
-                animate="animate"
-                className="absolute inset-0 bg-orange-500 blur-2xl opacity-30 -z-10 rounded-full"
-              />
-            </motion.div>
+            {/* Simple Vision Text Block */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="mt-6 max-w-xl"
+>
+  <p className="text-gray-300 text-lg leading-relaxed">
+    Cooking is not just about ingredients — it’s about passion, purpose, and soul.  
+    Every dish carries a story of tradition and craftsmanship.  
+    We believe food is an emotion, not just a meal.  
+    Our journey is driven by authenticity, creativity, and love for the art.
+  </p>
+</motion.div>
+
           </motion.div>
 
           {/* ========================================= */}
