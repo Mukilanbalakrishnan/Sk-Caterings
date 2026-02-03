@@ -25,7 +25,7 @@ import Footer from '../../components/Footer';
     ],
     lunch: [
       {
-        image: "/assets/weddingbreakfast.png",
+        image: "/assets/weddinglunch.png",
         label: "Grand Banana Leaf Wedding Lunch"
       }
     ],
@@ -332,9 +332,7 @@ pt-32 pb-10 font-sans">
   transition={{ duration: 0.4 }}
   className="w-full max-w-5xl mt-6 px-4"
 >
-  <h3 className="text-center text-yellow-400 font-serif text-2xl mb-6 tracking-wide">
-    {categories.find(c => c.id === activeCategory)?.label} Menu Items
-  </h3>
+  
 
   <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 px-10">
 
@@ -353,20 +351,7 @@ pt-32 pb-10 font-sans">
       onMouseLeave={() => !isTouchDevice && setActiveItem(null)}
     >
 
-        {/* Image */}
-        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-xl border border-white/10 group-hover:scale-110 transition-transform duration-300">
-          <img
-            src={item.img}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Name */}
-        <p className="mt-3 text-[#3b2f1b] text-xs md:text-sm font-semibold tracking-wide">
-
-          {item.name}
-        </p>
+        
       </motion.div>
     ))}
   </div>
