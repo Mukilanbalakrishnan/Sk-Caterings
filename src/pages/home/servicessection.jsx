@@ -4,42 +4,91 @@ import { Link } from "react-router-dom";
 
 
 // --- SERVICE DATA (5 Items) ---
+// --- SERVICE DATA (5 Items) ---
 const services = [
   {
-    id: "01",
-    title: "Royal Weddings",
-    description: "We craft fairytale dining experiences. From the Sangeet to the Reception, our culinary team designs bespoke menus that blend traditional grandeur with modern elegance.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-    icon: "💍"
-  },
-  {
-    id: "02",
-    title: "Corporate Galas",
-    description: "Impress your stakeholders with sophisticated catering. We provide seamless service for product launches, board meetings, and annual galas with a focus on punctuality and class.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-    icon: "🤝"
-  },
-  {
-    id: "03",
-    title: "Live Cooking Stations",
-    description: "Add a touch of theater to your event. Our chefs prepare gourmet pasta, sushi, and grills live in front of your guests, creating an interactive and fresh dining experience.",
-    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-    icon: "🔥"
-  },
-  {
-    id: "04",
-    title: "Private Socials",
-    description: "For intimate birthdays and anniversaries, we bring the fine-dining restaurant experience to your home. Enjoy personalized attention and exquisite dishes in your own space.",
-    image: "https://cdn.cdnparenting.com/articles/2018/06/243588019-H-768x525.jpg",
-    icon: "🥂"
-  },
-  {
-    id: "05",
-    title: "Destination Catering",
-    description: "Planning a destination wedding? Our logistics team ensures that our 5-star quality travels with you, maintaining freshness and taste whether on a beach or a hilltop.",
-    image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
-    icon: "✈️"
-  }
+  id: "01",
+  title: "Royal Weddings",
+  description: "We give good food for big weddings. We cook tasty dishes for all wedding functions.",
+  image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+  icon: " "
+},
+
+{
+  id: "02",
+  title: "Big Office Parties",
+  description: "We serve food for office meetings and company parties with clean and proper service.",
+  image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+  icon: "🤝"
+},
+
+{
+  id: "03",
+  title: "Live Food Cooking",
+  description: "Our cooks make food in front of people so they can see and eat fresh hot food.",
+  image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+  icon: "🔥"
+},
+
+{
+  id: "04",
+  title: "Home Special Parties",
+  description: "We give food for small home parties like birthday and anniversary.",
+  image: "https://cdn.cdnparenting.com/articles/2018/06/243588019-H-768x525.jpg",
+  icon: "🥂"
+},
+
+{
+  id: "05",
+  title: "Catering at Your Place",
+  description: "We come to your place and cook fresh food wherever your event is.",
+  image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
+  icon: "✈️"
+},
+
+// ----- NEW MODULES (VERY SIMPLE WORDS) -----
+
+{
+  id: "06",
+  title: "Engagement",
+  description: "We give simple and tasty food for engagement function.",
+  image: "https://wallpapers.com/images/hd/traditional-beautiful-engagement-couple-ring-7o6kh4dv11dsf0dp.jpg",
+  icon: "💎"
+},
+
+{
+  id: "07",
+  title: "Mehandhi / Sangeet / Haldi",
+  description: "We serve snacks, sweets, and special food for these functions.",
+  image: "https://i.pinimg.com/originals/59/ac/df/59acdf095cf95f73a00706feef5ad110.jpg",
+  icon: "🌼"
+},
+
+{
+  id: "08",
+  title: "Religious Ceremonies",
+  description: "We cook clean and pure traditional food for temple and puja events.",
+  image: "https://as1.ftcdn.net/v2/jpg/09/18/56/92/1000_F_918569254_c6HPa4lse9ggSM2wwjgoZfM00bdR2obq.jpg",
+  icon: "🛕"
+},
+
+{
+  id: "09",
+  title: "Alumni Meet / Retirement Party",
+  description: "We provide good food for old students meet and retirement parties.",
+  image: "https://news.temple.edu/sites/news/files/shutterstock_531382432-scaled_0.jpg",
+  icon: "🎓"
+},
+
+{
+  id: "10",
+  title: "House Warming",
+  description: "We serve fresh and traditional food for new house opening.",
+  image: "https://blog.photoadking.com/wp-content/uploads/2022/12/housewarming-invitation-wording.jpg",
+  icon: "🏠"
+}
+
+
 ];
 
 // --- ANIMATION VARIANTS ---

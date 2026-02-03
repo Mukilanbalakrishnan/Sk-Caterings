@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 // --- ASSETS ---
-const chefImage = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=800&q=80";
+// Swapped for a professional "Founder" style portrait
+const founderImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80";
 
 
 // --- REUSABLE COMPONENTS ---
 
 // 1. Animated Constellation Badge
-const ConstellationBadge = () => {
+const ConstellationBadge = () => {  
   return (
     <motion.div 
       initial={{ scale: 0, rotate: -180 }}
@@ -53,7 +54,7 @@ const ConstellationBadge = () => {
               dur="30s"
               repeatCount="indefinite"
             />
-            ★ CULINARY EXCELLENCE ★ EST. 2015 ★
+            ★ INNOVATION & VISION ★ EST. 2015 ★
           </textPath>
         </text>
       </svg>
@@ -98,52 +99,7 @@ const ConstellationBadge = () => {
   );
 };
 
-// 2. Floating Spice Component
-const FloatingSpice = ({ src, className, onClick, delay = 0 }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay, type: "spring" }}
-      whileHover={{ scale: 1.2, rotate: 5 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={onClick}
-      className={`absolute object-cover shadow-2xl cursor-pointer group ${className}`}
-      style={{
-        filter: "brightness(0.9) contrast(1.2)"
-      }}
-    >
-      <div className="relative overflow-hidden rounded-lg">
-        <motion.img 
-          src={src} 
-          alt="spice" 
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3"
-        >
-          <span className="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-            Learn More
-          </span>
-        </motion.div>
-      </div>
-      {/* Glow effect */}
-      <motion.div
-        animate={{ opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 2, repeat: Infinity, delay }}
-        className="absolute inset-0 rounded-lg bg-gradient-to-tr from-amber-300/10 to-transparent"
-      />
-    </motion.div>
-  );
-};
-
 const FounderSection = () => {
-  const [hoveredText, setHoveredText] = useState(null);
-
   // Text animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -227,7 +183,7 @@ const FounderSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="inline-block font-mono text-amber-300 text-lg mb-4 tracking-[0.5em] bg-gradient-to-r from-amber-900/20 to-orange-900/20 px-6 py-2 rounded-full backdrop-blur-sm border border-amber-700/30"
               >
-                ✦ MASTER CHEF ✦
+                ✦ FOUNDER & CEO ✦
               </motion.h4>
               
               <div className="relative">
@@ -270,34 +226,16 @@ const FounderSection = () => {
               className="mt-8 max-w-xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 rounded-2xl p-8"
             >
               <p className="text-gray-300 text-lg leading-relaxed">
-                Cooking is not just about ingredients — it's about passion, purpose, and soul.  
-                Every dish carries a story of tradition and craftsmanship.  
-                We believe food is an emotion, not just a meal.  
-                Our journey is driven by authenticity, creativity, and love for the art.
-              </p>
-              
-              {/* Stats */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10"
-              >
-                {[
-                  { value: "25+", label: "Years Experience" },
-                  { value: "5000+", label: "Events Catered" },
-                  { value: "50+", label: "Awards Won" }
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ scale: 1.05 }}
-                    className="text-center"
-                  >
-                    <div className="text-2xl font-bold text-amber-300">{stat.value}</div>
-                    <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
+  For us, building SK Caterings is not just about business — it is about love for food, 
+  respect for people, and years of hard work. Every step of this journey has been guided by 
+  honesty, dedication, and a deep understanding of what makes an event special.
+  <br /><br />
+  We believe good food creates memories and brings people together — 
+  <span className="text-orange-400 font-medium"> உணவு என்பது உறவு (Food is a bond)</span>. 
+  With this belief, we continue to serve every client with care, consistency, and pride, 
+  shaping a future rooted in tradition and trust.
+</p>
+
             </motion.div>
           </motion.div>
 
@@ -320,12 +258,12 @@ const FounderSection = () => {
               className="relative w-full h-[500px] md:h-[700px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
             >
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10 opacity-70" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-70" />
               
               {/* Animated Image */}
               <motion.img 
-                src={chefImage} 
-                alt="Founder Chef"
+                src={founderImage} 
+                alt="Founder Portrait"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
@@ -340,10 +278,10 @@ const FounderSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <h3 className="text-white text-3xl font-serif mb-2">Chef Sebastian K.</h3>
-                  <p className="text-amber-300 text-lg mb-2">Founder & Master Chef</p>
+                  <h3 className="text-white text-3xl font-serif mb-2">Sebastian K.</h3>
+                  <p className="text-amber-300 text-lg mb-2">Founder & CEO</p>
                   <p className="text-gray-300 text-sm">
-                    25+ years of culinary excellence
+                    15+ years of industry leadership
                   </p>
                 </motion.div>
               </div>
@@ -358,24 +296,8 @@ const FounderSection = () => {
                 className="absolute inset-0 z-5 bg-gradient-to-tr from-amber-500/10 via-transparent to-orange-500/5"
               />
             </motion.div>
-
-           
-
-            {/* Floating Quote */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, rotate: -2 }}
-              animate={{ opacity: 1, y: 0, rotate: -2 }}
-              transition={{ delay: 1.2 }}
-              className="absolute -left-10 bottom-1/2 w-64 bg-gradient-to-r from-amber-900/30 to-orange-900/20 backdrop-blur-md border-l-4 border-amber-500 p-4 rounded-r-lg"
-            >
-              <p className="text-white/90 italic text-sm">
-                "Great food is an art that feeds both body and soul."
-              </p>
-            </motion.div>
           </motion.div>
         </div>
-
-        
       </div>
 
       {/* Bottom Gradient Fade */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import logo from "../assets/logo.png";
+import base from "../assets/base.png";
 import EnquiryModal from './EnquiryModal'; 
 
 const navLinks = [
@@ -21,10 +22,11 @@ const Navbar = () => {
   const location = useLocation();
   const { scrollYProgress } = useScroll();
   const navRef = useRef(null);
+  
 
   // Scroll Animations
   const navBlur = useTransform(scrollYProgress, [0, 0.05], ["blur(0px)", "blur(10px)"]);
-  const navHeight = useTransform(scrollYProgress, [0, 0.05], ["5rem", "4rem"]);
+  const navHeight = useTransform(scrollYProgress, [0, 0.05], ["7rem", "6rem"]); 
   const navShadow = useTransform(
     scrollYProgress, 
     [0, 0.05], 
@@ -32,15 +34,11 @@ const Navbar = () => {
   );
 
   useEffect(() => {
-  const handleScroll = () => setIsScrolled(window.scrollY > 50);
-
-  // ✅ RUN ONCE ON MOUNT
-  handleScroll();
-
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, []);
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     setActiveLink(location.pathname);
@@ -48,12 +46,6 @@ const Navbar = () => {
   }, [location]);
 
   // Variants
-  const logoVariants = {
-    initial: { scale: 0.8, rotate: -180 },
-    animate: { scale: 1, rotate: 0, transition: { type: "spring", stiffness: 200, damping: 20 } },
-    hover: { scale: 1.1, rotate: [0, 5, -5, 0], transition: { rotate: { duration: 0.5, repeat: 1, repeatType: "reverse" }, scale: { duration: 0.2 } } }
-  };
-
   const navItemVariants = {
     initial: { opacity: 0, y: -20 },
     animate: (i) => ({ opacity: 1, y: 0, transition: { delay: 0.1 * i, duration: 0.5, ease: "easeOut" } }),
@@ -82,25 +74,75 @@ const Navbar = () => {
           boxShadow: navShadow
         }}
       >
-        {/* FIX: Added 'flex-row' to force horizontal layout on mobile */}
         <div className="container mx-auto px-6 md:px-12 flex flex-row justify-between items-center h-full relative">
           
-          {/* --- LEFT SIDE: LOGO --- */}
+          {/* --- LEFT SIDE: LOGO STACK --- */}
           <Link to="/" className="flex items-center gap-3 group relative h-full">
-            <motion.div 
-              variants={logoVariants} 
-              initial="initial" 
-              animate="animate" 
-              whileHover="hover" 
-              className="relative flex items-center h-full"
+            <div 
+              className="relative flex items-center justify-center"
+              style={{ 
+                width: 112, 
+                height: 112, 
+                perspective: 1000 // Essential for 3D rotation
+              }}
             >
-              {/* FIX: Smaller logo size on mobile (w-12 h-12) to prevent layout break */}
+              
+              {/* 1. BASE LOGO (Static + Pulse Glow) */}
               <motion.img 
-                src={logo} 
-                alt="SK Caterings Logo" 
-                className="w-12 h-12 md:w-20 md:h-20 object-contain" 
+                src={base} 
+                alt="Base Logo" 
+                className="absolute inset-0 m-auto w-[112px] h-[112px] object-contain opacity-80"
+
+                animate={{ 
+                  filter: [
+                    "drop-shadow(0 0 5px rgba(251, 191, 36, 0.3))", 
+                    "drop-shadow(0 0 15px rgba(251, 191, 36, 0.6))", 
+                    "drop-shadow(0 0 5px rgba(251, 191, 36, 0.3))"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               />
-            </motion.div>
+
+              {/* 2. TOP LOGO (Spins Left-to-Right / Y-Axis) */}
+              <motion.img 
+  src={logo} 
+  alt="SK Caterings Logo" 
+  className="relative z-10 w-24 h-24 md:w-28 md:h-28 object-contain"
+  animate={{ 
+    rotateY: [0, 90, 0], 
+    filter: [
+      "drop-shadow(0 0 6px rgba(251,191,36,0.5))",
+      "drop-shadow(0 0 18px rgba(251,191,36,0.9))",
+      "drop-shadow(0 0 6px rgba(251,191,36,0.5))",
+    ]
+  }}
+  transition={{ 
+    rotateY: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "linear"
+    },
+    filter: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }}
+  style={{ 
+    backfaceVisibility: "visible",   // 👈 prevents inversion look
+    translateY: -6
+  }}
+  whileHover={{ 
+    scale: 1.1,
+    filter: "drop-shadow(0 0 26px rgba(251,191,36,1))"
+  }}
+/>
+
+            </div>
           </Link>
 
           {/* --- CENTER: LINKS (Desktop Only) --- */}
@@ -154,7 +196,7 @@ const Navbar = () => {
             {/* Mobile Hamburger Button */}
             <motion.button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white focus:outline-none z-50 relative w-10 h-10 flex items-center justify-center ml-auto" // Added ml-auto to force right alignment
+              className="md:hidden text-white focus:outline-none z-50 relative w-10 h-10 flex items-center justify-center ml-auto" 
               whileTap={{ scale: 0.9 }}
             >
               <div className="w-8 h-8 relative">
@@ -170,87 +212,80 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* --- MOBILE MENU OVERLAY --- */}
       {/* --- MOBILE SIDEBAR MENU --- */}
-<AnimatePresence>
-  {isMobileMenuOpen && (
-    <>
-      {/* Dark Overlay/Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setIsMobileMenuOpen(false)}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-      />
-
-      {/* Sidebar Panel */}
-      <motion.div
-        initial={{ x: "100%" }} // Starts off-screen to the right
-        animate={{ x: 0 }}       // Slides in
-        exit={{ x: "100%" }}    // Slides back out
-        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="fixed top-0 right-0 h-full w-[280px] sm:w-[350px] bg-neutral-900 z-50 shadow-2xl md:hidden border-l border-white/10"
-      >
-        {/* Animated Background Texture (Optional) */}
-        <div className="absolute inset-0 opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
-
-        <div className="relative z-10 h-full flex flex-col p-8">
-          {/* Top of Sidebar: Logo or Close Button */}
-          <div className="flex justify-between items-center mb-12">
-            <span className="text-yellow-500 font-bold tracking-tighter text-xl">NAVIGATION</span>
-            <button 
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 text-white hover:text-yellow-500"
-            >
-              ✕
-            </button>
-          </div>
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+            />
 
-          {/* Navigation Links */}
-          <nav className="flex flex-col space-y-6">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.title}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 * index }}
-              >
-                <Link
-                  to={link.path}
-                  className={`text-2xl font-medium transition-colors ${
-                    activeLink === link.path ? "text-yellow-500" : "text-white"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-[280px] sm:w-[350px] bg-neutral-900 z-50 shadow-2xl md:hidden border-l border-white/10"
+            >
+              <div className="absolute inset-0 opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+
+              <div className="relative z-10 h-full flex flex-col p-8">
+                <div className="flex justify-between items-center mb-12">
+                  <span className="text-yellow-500 font-bold tracking-tighter text-xl">NAVIGATION</span>
+                  <button 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-white hover:text-yellow-500"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <nav className="flex flex-col space-y-6">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.title}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                    >
+                      <Link
+                        to={link.path}
+                        className={`text-2xl font-medium transition-colors ${
+                          activeLink === link.path ? "text-yellow-500" : "text-white"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.title}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                <motion.div 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 0.6 }}
+                  className="mt-auto pb-10"
                 >
-                  {link.title}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          {/* Bottom of Sidebar: Enquiry Button */}
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ delay: 0.6 }}
-            className="mt-auto pb-10"
-          >
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setIsEnquiryOpen(true);
-              }}
-              className="w-full py-4 bg-gradient-to-r from-yellow-600 to-amber-600 text-white font-bold uppercase tracking-widest rounded-xl shadow-lg"
-            >
-              Enquiry Now ✉️
-            </button>
-          </motion.div>
-        </div>
-      </motion.div>
-    </>
-  )}
-</AnimatePresence>
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsEnquiryOpen(true);
+                    }}
+                    className="w-full py-4 bg-gradient-to-r from-yellow-600 to-amber-600 text-white font-bold uppercase tracking-widest rounded-xl shadow-lg"
+                  >
+                    Enquiry Now ✉️
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <EnquiryModal isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
     </>

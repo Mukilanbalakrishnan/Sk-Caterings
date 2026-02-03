@@ -12,6 +12,7 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import Chatbot from '../../components/Chatbot';
 
+
 const Home = () => {
   return (
     
@@ -20,6 +21,7 @@ const Home = () => {
       <BananaLeafScrollButton />
       <Navbar/>
       <Chatbot/>
+      
       
       {/* Light Section */}
       <div className="relative z-30">

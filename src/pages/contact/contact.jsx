@@ -1,142 +1,255 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ChevronDown, Instagram, Facebook, MessageCircle, Twitter } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, Twitter, MessageCircle, ArrowRight } from 'lucide-react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
+// --- COMPONENT: MAGNETIC BUTTON ---
+const MagneticButton = ({ children, className }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const xSpring = useSpring(x, { stiffness: 150, damping: 15 });
+  const ySpring = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    x.set((clientX - centerX) * 0.3);
+    y.set((clientY - centerY) * 0.3);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.button
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x: xSpring, y: ySpring }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+// --- COMPONENT: SOCIAL TILE ---
+const SocialTile = ({ icon: Icon, label, color, delay }) => (
+  <motion.a
+    href="#"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ delay, duration: 0.5 }}
+    whileHover={{ y: -5 }}
+    className="group relative flex flex-col items-center justify-center w-24 h-24 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 transition-all cursor-pointer overflow-hidden"
+  >
+    <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${color}`} />
+    <Icon className="text-white group-hover:scale-110 transition-transform duration-300 z-10" size={28} />
+    <span className="text-[10px] uppercase tracking-widest text-white/50 mt-2 group-hover:text-white transition-colors z-10">{label}</span>
+  </motion.a>
+);
+
 const Contact = () => {
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-    };
+  return (
+    <div className="min-h-screen bg-[#050505] font-sans selection:bg-amber-500 selection:text-black overflow-hidden relative">
+      <Navbar />
 
-    // Brand Colors for reference:
-    // Instagram: #E4405F
-    // Facebook: #1877F2
-    // WhatsApp: #25D366
-    // X (Twitter): #000000
-    // Gmail: #EA4335
+      {/* --- BACKGROUND AMBIANCE --- */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
+      </div>
 
-    return (
-        <div className="min-h-screen font-sans bg-[#FDFCF0]">
-            <Navbar/>
-            {/* Navigation Section */}
+      <div className="relative z-10 pt-32 pb-20 container mx-auto px-6 lg:px-12">
+        
+        {/* --- HEADER --- */}
+        <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 border border-amber-500/30 rounded-full px-4 py-1 mb-6 bg-amber-500/5 backdrop-blur-sm"
+          >
+            <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="text-amber-500 text-xs font-mono uppercase tracking-widest">Concierge Desk Open</span>
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-5xl md:text-7xl font-serif text-white mb-4"
+          >
+            Secure Your <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-600">Experience</span>
+          </motion.h1>
+          <p className="text-white/40 max-w-lg mx-auto font-light">
+            You are one step away from an unforgettable event. Fill out the invitation below to get on our priority list.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          
+          {/* --- LEFT: THE "GOLDEN TICKET" FORM --- */}
+          <div className="lg:col-span-7 perspective-1000">
+            <motion.div 
+              initial={{ rotateX: 10, opacity: 0 }}
+              animate={{ rotateX: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative bg-[#111] rounded-[2rem] border border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row group"
+            >
+              {/* Decorative "Tear Off" Line (Mobile: Bottom, Desktop: Right) */}
+              <div className="absolute right-0 top-0 bottom-0 w-1 border-l-2 border-dashed border-white/10 hidden md:block" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 border-t-2 border-dashed border-white/10 md:hidden" />
+
+              {/* TICKET MAIN BODY (FORM) */}
+              <div className="flex-1 p-8 md:p-12 relative">
+                 {/* Watermark */}
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/[0.02] text-9xl font-black rotate-[-15deg] pointer-events-none whitespace-nowrap">
+                    SK CATERING
+                 </div>
+
+                 <h3 className="text-2xl font-serif text-white mb-8 flex items-center gap-3">
+                   <span className="w-8 h-[1px] bg-amber-500"></span>
+                   Event Details
+                 </h3>
+
+                 <form className="space-y-8 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="group relative">
+                        <label className="text-xs text-amber-500/70 uppercase tracking-widest mb-2 block">Host Name</label>
+                        <input type="text" placeholder="John Doe" className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder:text-white/20 focus:outline-none focus:border-amber-500 transition-colors" />
+                      </div>
+                      <div className="group relative">
+                        <label className="text-xs text-amber-500/70 uppercase tracking-widest mb-2 block">Contact No.</label>
+                        <input type="text" placeholder="+91 00000 00000" className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder:text-white/20 focus:outline-none focus:border-amber-500 transition-colors" />
+                      </div>
+                    </div>
+
+                    <div className="group relative">
+                      <label className="text-xs text-amber-500/70 uppercase tracking-widest mb-2 block">Event Type</label>
+                      <div className="flex flex-wrap gap-3">
+                        {['Wedding', 'Corporate', 'Social', 'Other'].map(type => (
+                          <label key={type} className="cursor-pointer">
+                            <input type="radio" name="eventType" className="peer hidden" />
+                            <span className="px-4 py-2 rounded-full border border-white/10 text-white/60 text-sm hover:border-amber-500/50 hover:text-white peer-checked:bg-amber-500 peer-checked:text-black peer-checked:border-amber-500 transition-all">
+                              {type}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="group relative">
+                      <label className="text-xs text-amber-500/70 uppercase tracking-widest mb-2 block">Special Requests</label>
+                      <textarea rows="2" placeholder="Tell us about your dream theme..." className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder:text-white/20 focus:outline-none focus:border-amber-500 transition-colors resize-none" />
+                    </div>
+
+                    <div className="pt-4">
+                      <MagneticButton className="w-full py-5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-black font-bold text-lg uppercase tracking-widest hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-shadow flex items-center justify-center gap-3 group/btn">
+                         Send Invitation 
+                         <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                      </MagneticButton>
+                    </div>
+                 </form>
+              </div>
+
+              {/* TICKET STUB (INFO) */}
+              <div className="w-full md:w-24 bg-[#0a0a0a] flex md:flex-col items-center justify-between p-6 border-l border-white/5 relative overflow-hidden">
+                 <div className="hidden md:block absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10" />
+                 
+                 {/* Barcode Aesthetic */}
+                 <div className="flex md:flex-col gap-1 opacity-40">
+                    {[...Array(10)].map((_,i) => <div key={i} className={`bg-white ${i%2===0 ? 'w-1 h-8 md:w-8 md:h-1' : 'w-0.5 h-8 md:w-8 md:h-0.5'}`} />)}
+                 </div>
+
+                 <div className="rotate-0 md:-rotate-90 whitespace-nowrap text-white/20 font-mono text-xs uppercase tracking-[0.5em]">
+                    ADMIT ONE
+                 </div>
+
+                 <div className="text-amber-500 font-bold text-xl md:rotate-0">
+                    SK
+                 </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* --- RIGHT: THE RADAR & CONNECTIONS --- */}
+          <div className="lg:col-span-5 space-y-8">
             
+            {/* RADAR MAP CARD */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="relative h-[300px] w-full rounded-[2rem] overflow-hidden border border-white/10 group"
+            >
+               {/* Grayscale Map */}
+               <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968459391!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1622646244672!5m2!1sen!2sus" 
+                className="w-full h-full opacity-60 grayscale invert contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700"
+                style={{ border: 0 }}
+                loading="lazy"
+               />
+               
+               {/* Radar Scanner Overlay */}
+               <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-amber-500/30 rounded-full animate-[ping_3s_linear_infinite]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-amber-500 rounded-full shadow-[0_0_20px_#f59e0b]" />
+                  {/* Rotating Scanner */}
+                  <div className="absolute top-1/2 left-1/2 w-[150px] h-[150px] bg-gradient-to-r from-transparent to-amber-500/20 origin-bottom-left -translate-y-full animate-[spin_4s_linear_infinite] rounded-tr-full" />
+               </div>
 
-            {/* Hero Section */}
-            <div className="relative h-[400px] overflow-hidden bg-black">
-                <motion.img
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.6 }}
-                    transition={{ duration: 1.5 }}
-                    src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                    <h1 className="text-white text-6xl md:text-8xl font-black italic uppercase drop-shadow-2xl tracking-tighter">Contact Us</h1>
-                    <div className="h-2 w-24 bg-yellow-500 mt-4 rounded-full shadow-lg"></div>
-                </div>
+               {/* Location Tag */}
+               <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-bold text-sm">Main Headquarters</h4>
+                    <p className="text-white/50 text-xs">Anna Nagar, Chennai</p>
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-amber-500">
+                    <ArrowRight size={14} className="-rotate-45" />
+                  </div>
+               </div>
+            </motion.div>
+
+            {/* HOLOGRAPHIC SOCIALS GRID */}
+            <div>
+               <h4 className="text-white/40 text-xs font-mono uppercase tracking-widest mb-6">Connect Digitally</h4>
+               <div className="flex flex-wrap gap-4">
+                  <SocialTile icon={Instagram} label="Insta" color="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500" delay={0.3} />
+                  <SocialTile icon={Facebook} label="Facebook" color="bg-blue-600" delay={0.4} />
+                  <SocialTile icon={MessageCircle} label="WhatsApp" color="bg-green-500" delay={0.5} />
+                  <SocialTile icon={Twitter} label="X" color="bg-white" delay={0.6} />
+                  <SocialTile icon={Mail} label="Mail" color="bg-red-500" delay={0.7} />
+               </div>
             </div>
 
-            {/* Main Content Grid */}
-            <main className="bg-gradient-to-br from-[#B48B1B] via-[#8C6F12] to-[#3D3005] py-16 px-6 lg:px-20 grid lg:grid-cols-12 gap-10">
+            {/* DIRECT LINE */}
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.8 }}
+               className="bg-gradient-to-r from-amber-500/10 to-transparent p-6 rounded-2xl border-l-4 border-amber-500 flex items-center gap-4"
+            >
+               <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
+                  <Phone size={24} />
+               </div>
+               <div>
+                  <p className="text-amber-500 text-xs font-bold uppercase tracking-wider">Priority Support</p>
+                  <p className="text-white text-2xl font-serif font-bold">+91 98765 43210</p>
+               </div>
+            </motion.div>
 
-                {/* Left Column: Info & Large Map */}
-                <div className="lg:col-span-7 space-y-8">
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {/* Address & Contact Details */}
-                        <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="bg-white p-8 rounded-[2.5rem] shadow-xl border-t-4 border-amber-500">
-                            <h3 className="text-[#A18218] font-black uppercase mb-6 border-b pb-2 tracking-widest text-sm italic">Official Details</h3>
-                            <div className="space-y-5">
-                                <div className="flex gap-4 items-center group">
-                                    <MapPin className="text-amber-600 group-hover:scale-110 transition-transform" size={20} />
-                                    <p className="text-sm font-bold text-gray-700">No. 1, SK-Catering Services, Anna Nagar, Chennai.</p>
-                                </div>
-                                <div className="flex gap-4 items-center group">
-                                    <Mail className="text-amber-600 group-hover:scale-110 transition-transform" size={20} />
-                                    <p className="text-sm font-bold text-gray-700">skcatering@gmail.com</p>
-                                </div>
-                                <div className="flex gap-4 items-center group">
-                                    <Phone className="text-amber-600 group-hover:scale-110 transition-transform" size={20} />
-                                    <p className="text-sm font-bold text-gray-700">+91 98765 43210</p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* JOIN US SECTION - ORIGINAL BRAND COLORS */}
-                        <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="bg-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/30 flex flex-col items-center justify-center shadow-2xl">
-                            <p className="text-white text-[10px] uppercase tracking-[0.5em] mb-8 font-black italic">Join Us On</p>
-                            <div className="flex flex-wrap justify-center gap-7">
-                                {/* Instagram */}
-                                <motion.div whileHover={{ scale: 1.25, rotate: 5 }}>
-                                    <Instagram size={30} className="text-white hover:text-[#E4405F] transition-colors duration-300 drop-shadow-[0_0_10px_rgba(228,64,95,0.4)] cursor-pointer" />
-                                </motion.div>
-                                {/* Facebook */}
-                                <motion.div whileHover={{ scale: 1.25, rotate: -5 }}>
-                                    <Facebook size={30} className="text-white hover:text-[#1877F2] transition-colors duration-300 drop-shadow-[0_0_10px_rgba(24,119,242,0.4)] cursor-pointer" />
-                                </motion.div>
-                                {/* WhatsApp */}
-                                <motion.div whileHover={{ scale: 1.25, rotate: 5 }}>
-                                    <MessageCircle size={30} className="text-white hover:text-[#25D366] transition-colors duration-300 drop-shadow-[0_0_10px_rgba(37,211,102,0.4)] cursor-pointer" />
-                                </motion.div>
-                                {/* Twitter/X */}
-                                <motion.div whileHover={{ scale: 1.25, rotate: -5 }}>
-                                    <Twitter size={30} className="text-white hover:text-black transition-colors duration-300 cursor-pointer" />
-                                </motion.div>
-                                {/* Email */}
-                                <motion.div whileHover={{ scale: 1.25, rotate: 5 }}>
-                                    <Mail size={30} className="text-white hover:text-[#EA4335] transition-colors duration-300 drop-shadow-[0_0_10px_rgba(234,67,53,0.4)] cursor-pointer" />
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* LARGE MAP */}
-                    <motion.div className="h-[520px] rounded-[3.5rem] overflow-hidden border-4 border-amber-400/40 shadow-2xl bg-gray-200">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124440.320732865!2d80.14207936453678!3d12.923149022638363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d333f%3A0x6d3e707106521737!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1716543210987!5m2!1sen!2sin"
-                            width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"
-                        />
-                    </motion.div>
-                </div>
-
-                {/* Right Column: Inquiry Desk (Slim & Elegant) */}
-                <motion.div className="lg:col-span-5 bg-white p-10 rounded-[4rem] shadow-[-20px_20px_60px_rgba(0,0,0,0.3)] self-start border-b-8 border-amber-500">
-                    <div className="mb-8 rounded-[2rem] overflow-hidden h-36 relative group">
-                        <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=2070" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                            <Phone className="text-yellow-400 animate-bounce" size={40} />
-                        </div>
-                    </div>
-
-                    <h2 className="text-3xl font-black text-gray-800 text-center mb-8 italic uppercase tracking-tighter">Inquiry Desk</h2>
-
-                    <form className="space-y-5">
-                        <input type="text" placeholder="Full Name" className="w-full p-4 bg-amber-50/50 border-2 border-transparent focus:border-amber-500 rounded-2xl outline-none transition-all shadow-inner font-bold text-gray-700 text-sm" />
-                        <input type="text" placeholder="Mobile Number" className="w-full p-4 bg-amber-50/50 border-2 border-transparent focus:border-amber-500 rounded-2xl outline-none transition-all shadow-inner font-bold text-gray-700 text-sm" />
-                        <input type="email" placeholder="Email Address" className="w-full p-4 bg-amber-50/50 border-2 border-transparent focus:border-amber-500 rounded-2xl outline-none transition-all shadow-inner font-bold text-gray-700 text-sm" />
-
-                        <div className="relative">
-                            <select className="w-full p-4 bg-amber-50/50 border-2 border-transparent focus:border-amber-500 rounded-2xl outline-none appearance-none font-black text-gray-500 shadow-inner text-sm">
-                                <option>Select Category</option>
-                                <option>Royal Wedding</option>
-                                <option>Corporate Gala</option>
-                                <option>Social Gathering</option>
-                            </select>
-                            <ChevronDown className="absolute right-6 top-5 text-amber-600" size={20} />
-                        </div>
-
-                        <button className="w-full bg-gray-950 text-yellow-500 font-black py-4 rounded-2xl shadow-xl text-xl hover:bg-[#EAB308] hover:text-white transition-all transform active:scale-95 uppercase tracking-widest mt-4">
-                            SUBMIT NOW
-                        </button>
-                    </form>
-                </motion.div>
-            </main>
-            <Footer/>
-
-            
+          </div>
         </div>
-    );
+      </div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Contact;

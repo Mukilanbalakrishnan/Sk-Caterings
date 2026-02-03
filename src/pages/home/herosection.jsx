@@ -92,8 +92,8 @@ const herosection = () => {
           className="text-white text-6xl md:text-8xl font-bold tracking-tight mb-4 font-serif overflow-hidden"
         >
           {/* We wrap "CULINARY" separately to style it or just split it */}
-          <span className="inline-block mr-4">{splitText("CULINARY")}</span>
-          <span className="text-yellow-400 inline-block">{splitText("ARTISTRY")}</span>
+          <span className="inline-block mr-4">{splitText("Magic on a")}</span>
+          <span className="text-yellow-400 inline-block">{splitText("Plate")}</span>
         </motion.h1>
 
         {/* 2. Slide-up Subtitle with a delay */}
@@ -106,23 +106,7 @@ const herosection = () => {
           "Where every flavor tells a story of elegance."
         </motion.p>
 
-        {/* 3. Magnetic-style Button */}
-        <motion.button 
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.8 }}
-          whileHover={{ 
-            scale: 1.1, 
-            boxShadow: "0px 0px 20px rgb(234, 179, 8)",
-            textShadow: "0px 0px 8px rgb(255,255,255)"
-          }}
-          whileTap={{ scale: 0.95 }}
-          className="relative px-10 py-4 bg-transparent border border-yellow-400 text-yellow-400 font-semibold uppercase tracking-widest overflow-hidden group"
-        >
-          {/* Button Fill Effect */}
-          <span className="absolute inset-0 w-0 bg-yellow-400 transition-all duration-[250ms] ease-out group-hover:w-full opacity-10"></span>
-          <span className="relative z-10">Reserve A Date</span>
-        </motion.button>
+        
 
         {/* 4. Scroll Indicator */}
         <motion.div 

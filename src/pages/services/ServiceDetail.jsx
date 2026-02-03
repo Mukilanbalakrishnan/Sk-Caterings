@@ -11,166 +11,37 @@ import Footer from '../../components/Footer';
 
     const services = [
     {
-        id: 1,
-        title: "Wedding Grandeur",
-        description: "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
-        // Placeholder banana leaf image for background
-        image: "/asserts/services/banana.png", 
-        menu: {
-        breakfast: [
-            { name: "Idli & Vada", img: "/asserts/services/idly.png", pos: 'center' },
-            { name: "Ven Pongal", img: "/asserts/services/pongal.png", pos: 'bottomLeft' },
-            { name: "Filter Coffee", img: '/asserts/services/filtercoffee.png', pos: 'topRight' },
-            { name: "Kesari", img: "/asserts/services/kesari.png", pos: 'topLeft' }
-        ],
-        lunch: [
-            { name: "Mutton Biryani", img: "/asserts/services/muttonbriyani.png", pos: 'topCenter' },
-            { name: "Chicken 65", img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=300&q=80", pos: 'topLeft' },
-            { name: "Fish Fry", img: "/asserts/services/fishfry.png", pos: 'bottomRight' },
-            { name: "Rasmalai", img: "/asserts/services/rasamalai.png", pos: 'topRight' },
-            { name: "White Rice", img: "/asserts/services/whiterice.png", pos: 'bottomCenter' }
-        ],
-        dinner: [
-            { name: "Chapati & Kurma", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&q=80", pos: 'center' },
-            { name: "Fried Rice", img: "/asserts/services/friedrice.png", pos: 'bottomLeft' },
-            { name: "Gobi Manchurian", img: "/asserts/services/gobi.jpg", pos: 'topLeft' },
-            { name: "Badam Milk", img: "/asserts/services/badamilk.png", pos: 'topRight' },
-            { name: "Dosa", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&q=80", pos: 'bottomRight' }
-        ]
-        }
-    },
-    {
-        id: 2,
-        title: "Birthday Bash",
-        description: "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
-        // Placeholder banana leaf image for background
-        image: "/asserts/services/banana.png", 
-        menu: {
-        breakfast: [
-            { name: "Idli & Vada", img: "/asserts/services/idly.png", pos: 'center' },
-            { name: "Ven Pongal", img: "/asserts/services/pongal.png", pos: 'bottomLeft' },
-            { name: "Filter Coffee", img: '/asserts/services/filtercoffee.png', pos: 'topRight' },
-            { name: "Kesari", img: "/asserts/services/kesari.png", pos: 'topLeft' }
-        ],
-        lunch: [
-            { name: "Mutton Biryani", img: "/asserts/services/muttonbriyani.png", pos: 'topCenter' },
-            { name: "Chicken 65", img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=300&q=80", pos: 'topLeft' },
-            { name: "Fish Fry", img: "/asserts/services/fishfry.png", pos: 'bottomRight' },
-            { name: "Rasmalai", img: "/asserts/services/rasamalai.png", pos: 'topRight' },
-            { name: "White Rice", img: "/asserts/services/whiterice.png", pos: 'bottomCenter' }
-        ],
-        dinner: [
-            { name: "Chapati & Kurma", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&q=80", pos: 'center' },
-            { name: "Fried Rice", img: "/asserts/services/friedrice.png", pos: 'bottomLeft' },
-            { name: "Gobi Manchurian", img: "/asserts/services/gobi.jpg", pos: 'topLeft' },
-            { name: "Badam Milk", img: "/asserts/services/badamilk.png", pos: 'topRight' },
-            { name: "Dosa", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&q=80", pos: 'bottomRight' }
-        ]
-        }
-    },
-    {
-        id: 3,
-        title: "Corporate Meets",
-        description: "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
-        // Placeholder banana leaf image for background
-        image: "/asserts/services/banana.png", 
-        menu: {
-        breakfast: [
-            { name: "Idli & Vada", img: "/asserts/services/idly.png", pos: 'center' },
-            { name: "Ven Pongal", img: "/asserts/services/pongal.png", pos: 'bottomLeft' },
-            { name: "Filter Coffee", img: '/asserts/services/filtercoffee.png', pos: 'topRight' },
-            { name: "Kesari", img: "/asserts/services/kesari.png", pos: 'topLeft' }
-        ],
-        lunch: [
-            { name: "Mutton Biryani", img: "/asserts/services/muttonbriyani.png", pos: 'topCenter' },
-            { name: "Chicken 65", img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=300&q=80", pos: 'topLeft' },
-            { name: "Fish Fry", img: "/asserts/services/fishfry.png", pos: 'bottomRight' },
-            { name: "Rasmalai", img: "/asserts/services/rasamalai.png", pos: 'topRight' },
-            { name: "White Rice", img: "/asserts/services/whiterice.png", pos: 'bottomCenter' }
-        ],
-        dinner: [
-            { name: "Chapati & Kurma", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&q=80", pos: 'center' },
-            { name: "Fried Rice", img: "/asserts/services/friedrice.png", pos: 'bottomLeft' },
-            { name: "Gobi Manchurian", img: "/asserts/services/gobi.jpg", pos: 'topLeft' },
-            { name: "Badam Milk", img: "/asserts/services/badamilk.png", pos: 'topRight' },
-            { name: "Dosa", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&q=80", pos: 'bottomRight' }
-        ]
-        }
-    },
-    {
-        id: 4,
-        title: "Baby Shower",
-        description: "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
-        // Placeholder banana leaf image for background
-        image: "/asserts/services/banana.png", 
-        menu: {
-        breakfast: [
-            { name: "Idli & Vada", img: "/asserts/services/idly.png", pos: 'center' },
-            { name: "Ven Pongal", img: "/asserts/services/pongal.png", pos: 'bottomLeft' },
-            { name: "Filter Coffee", img: '/asserts/services/filtercoffee.png', pos: 'topRight' },
-            { name: "Kesari", img: "/asserts/services/kesari.png", pos: 'topLeft' }
-        ],
-        lunch: [
-            { name: "Mutton Biryani", img: "/asserts/services/muttonbriyani.png", pos: 'topCenter' },
-            { name: "Chicken 65", img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=300&q=80", pos: 'topLeft' },
-            { name: "Fish Fry", img: "/asserts/services/fishfry.png", pos: 'bottomRight' },
-            { name: "Rasmalai", img: "/asserts/services/rasamalai.png", pos: 'topRight' },
-            { name: "White Rice", img: "/asserts/services/whiterice.png", pos: 'bottomCenter' }
-        ],
-        dinner: [
-            { name: "Chapati & Kurma", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&q=80", pos: 'center' },
-            { name: "Fried Rice", img: "/asserts/services/friedrice.png", pos: 'bottomLeft' },
-            { name: "Gobi Manchurian", img: "/asserts/services/gobi.jpg", pos: 'topLeft' },
-            { name: "Badam Milk", img: "/asserts/services/badamilk.png", pos: 'topRight' },
-            { name: "Dosa", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&q=80", pos: 'bottomRight' }
-        ]
-        }
-    },
-    {
-        id: 5,
-        title: "Private Parties",
-        description: "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
-        // Placeholder banana leaf image for background
-        image: "/asserts/services/banana.png", 
-        menu: {
-        breakfast: [
-            { name: "Idli & Vada", img: "/asserts/services/idly.png", pos: 'center' },
-            { name: "Ven Pongal", img: "/asserts/services/pongal.png", pos: 'bottomLeft' },
-            { name: "Filter Coffee", img: '/asserts/services/filtercoffee.png', pos: 'topRight' },
-            { name: "Kesari", img: "/asserts/services/kesari.png", pos: 'topLeft' }
-        ],
-        lunch: [
-            { name: "Mutton Biryani", img: "/asserts/services/muttonbriyani.png", pos: 'topCenter' },
-            { name: "Chicken 65", img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=300&q=80", pos: 'topLeft' },
-            { name: "Fish Fry", img: "/asserts/services/fishfry.png", pos: 'bottomRight' },
-            { name: "Rasmalai", img: "/asserts/services/rasamalai.png", pos: 'topRight' },
-            { name: "White Rice", img: "/asserts/services/whiterice.png", pos: 'bottomCenter' }
-        ],
-        dinner: [
-            { name: "Chapati & Kurma", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&q=80", pos: 'center' },
-            { name: "Fried Rice", img: "/asserts/services/friedrice.png", pos: 'bottomLeft' },
-            { name: "Gobi Manchurian", img: "/asserts/services/gobi.jpg", pos: 'topLeft' },
-            { name: "Badam Milk", img: "/asserts/services/badamilk.png", pos: 'topRight' },
-            { name: "Dosa", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=300&q=80", pos: 'bottomRight' }
-        ]
-        }
-    },
-    // ... other services ...
+  id: 1,
+  title: "Wedding Grandeur",
+  description:
+    "Orchestrating your fairy-tale wedding with royal feasts. We specialize in traditional multi-course meals served on banana leaves.",
+
+  menu: {
+    breakfast: [
+      {
+        image: "/src//assets/weddingbreakfast.png",
+        label: "Traditional South Indian Breakfast"
+      }
+    ],
+    lunch: [
+      {
+        image: "/assets/weddingbreakfast.png",
+        label: "Grand Banana Leaf Wedding Lunch"
+      }
+    ],
+    dinner: [
+      {
+        image: "/assets/services/dinner.png",
+        label: "Elegant Wedding Dinner"
+      }
+    ]
+  }
+}
+,
+    
     ];
 
-// --- POSITION MAP ---
-const universalPositionMap = {
-  topCenter:   { x: 50, y: 20, scale: 1.2, z: 30 },
-  center:      { x: 50, y: 50, scale: 1.2, z: 30 },
 
-  topLeft:     { x: 30, y: 20, scale: 0.9, z: 20 },
-  topRight:    { x: 70, y: 30, scale: 0.9, z: 20 },
-
-  bottomLeft:  { x: 30, y: 50, scale: 0.9, z: 20 },
-  bottomRight: { x: 70, y: 60, scale: 0.9, z: 20 },
-
-  bottomCenter:{ x: 50, y: 65, scale: 0.9, z: 20 },
-};
 
 
 
@@ -230,10 +101,22 @@ const itemSize = Math.min(
     { id: 'lunch', label: 'Lunch', icon: '🍛' },
     { id: 'dinner', label: 'Dinner', icon: '🌙' }
   ];
+  const getBackgroundImage = () => {
+  // Only Wedding (id === 1) uses category-based images
+  if (service.id === 1) {
+    return service.menu?.[activeCategory]?.[0]?.image;
+  }
+
+  // Other services → fallback banana leaf
+  return service.image;
+};
+
 
   return (
     <>
     <Navbar/>
+
+    
     <div className="min-h-screen bg-gradient-to-br from-[#fdfcf9] via-[#f7f3eb] to-[#f2efe9] 
 text-[#2b2b2b] relative overflow-hidden flex flex-col items-center 
 pt-32 pb-10 font-sans">
@@ -241,7 +124,9 @@ pt-32 pb-10 font-sans">
 
       
       {/* Background Decor */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/marble.png')] opacity-[0.12] pointer-events-none" />
+      <div className="relative z-50 flex flex-wrap justify-center gap-4 mb-10 pointer-events-auto"/>
+
+
 
 {/* Golden glow */}
 <div className="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] bg-[#facc15]/20 rounded-full blur-[140px] pointer-events-none" />
@@ -294,21 +179,22 @@ pt-32 pb-10 font-sans">
   {/* Intrinsic ratio box */}
   <div className="relative w-full pt-[56%]">
 
-    <motion.div 
+    <motion.div
   ref={leafRef}
   layout
-  className="absolute inset-0 overflow-visible"
+  className="absolute inset-0 overflow-visible pointer-events-none"
 >
 
 
+
       
-      {/* 1. Leaf Background */}
       <img 
-        src={service.image} 
-        alt="Banana Leaf" 
-        className="absolute inset-0 w-full h-full object-contain"
-        style={{ filter: "brightness(0.6) contrast(1.1)" }} 
-      />
+  src={getBackgroundImage()} 
+  alt={activeCategory}
+  className="absolute inset-0 w-full h-full object-contain"
+  style={{ filter: "brightness(0.9) contrast(1.05)" }} 
+/>
+
 
       {/* 2. Glossy Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-[#facc15]/10" />
@@ -341,12 +227,13 @@ pt-32 pb-10 font-sans">
           >
             {service.menu && service.menu[activeCategory] ? (
               service.menu[activeCategory].map((item, index) => {
-                const pos = universalPositionMap[item.pos] || universalPositionMap.center;
+                
 
                 return (
                   <motion.div 
   key={index}
-  className="absolute flex flex-col items-center cursor-pointer"
+  className="flex flex-col items-center cursor-pointer"
+
   onClick={() => {
     if (isTouchDevice) {
       setActiveItem(activeItem === index ? null : index);
@@ -359,14 +246,10 @@ pt-32 pb-10 font-sans">
     if (!isTouchDevice) setActiveItem(null);
   }}
 
-                    style={{ 
-                      top: `${pos.y}%`, 
-                      left: `${pos.x}%`, 
-                      zIndex: pos.z,
-                      transform: `translate(-50%, -50%) scale(${pos.scale})`
-                    }}
+                    
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: pos.scale, opacity: 1 }}
+                    animate={{ scale: 1, opacity: 1 }}
+
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20, delay: index * 0.1 }}
                   >
@@ -453,15 +336,23 @@ pt-32 pb-10 font-sans">
     {categories.find(c => c.id === activeCategory)?.label} Menu Items
   </h3>
 
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-    {service.menu[activeCategory]?.map((item, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: i * 0.05 }}
-        className="flex flex-col items-center text-center group"
-      >
+  <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 px-10">
+
+  {service.menu[activeCategory].map((item, index) => (
+    <motion.div
+      key={index}
+      className="flex flex-col items-center cursor-pointer"
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0, opacity: 0 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20, delay: index * 0.05 }}
+      onClick={() => {
+        if (isTouchDevice) setActiveItem(activeItem === index ? null : index);
+      }}
+      onMouseEnter={() => !isTouchDevice && setActiveItem(index)}
+      onMouseLeave={() => !isTouchDevice && setActiveItem(null)}
+    >
+
         {/* Image */}
         <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-xl border border-white/10 group-hover:scale-110 transition-transform duration-300">
           <img

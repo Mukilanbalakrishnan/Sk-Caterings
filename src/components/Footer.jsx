@@ -47,14 +47,17 @@ const itemVariants = {
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#022c22] border-t border-emerald-900/50 pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-[#050505] border-t border-white/10 pt-20 pb-10 overflow-hidden">
       
       {/* Background Texture & Glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-[length:100px_100px]" />
-        {/* Soft Emerald Glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-[100px]" />
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-10 mix-blend-overlay" 
+             style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} 
+        />
+        {/* Soft Amber/Gold Glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-600/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-900/5 rounded-full blur-[100px]" />
       </div>
 
       <motion.div 
@@ -69,7 +72,8 @@ const Footer = () => {
           {/* COLUMN 1: BRAND INFO */}
           <motion.div variants={itemVariants} className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white">
+              {/* Metallic Gold Gradient Icon */}
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center text-black shadow-lg shadow-amber-900/20">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
@@ -79,7 +83,7 @@ const Footer = () => {
               </span>
             </div>
             
-            <p className="text-emerald-100/60 text-sm leading-relaxed pr-4">
+            <p className="text-zinc-500 text-sm leading-relaxed pr-4">
               Your destination for authentic flavors and a seamless dining experience. We bring the grandeur of traditional feasts to your modern celebrations.
             </p>
             
@@ -89,8 +93,8 @@ const Footer = () => {
                 <motion.a
                   key={icon.name}
                   href="#"
-                  whileHover={{ y: -3, color: "#34d399" }}
-                  className="text-emerald-100/40 transition-colors duration-300"
+                  whileHover={{ y: -3, color: "#f59e0b" }}
+                  className="text-zinc-600 transition-colors duration-300"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                     <path d={icon.path} />
@@ -108,10 +112,10 @@ const Footer = () => {
                 <li key={link.name}>
                   <motion.a 
                     href={link.href}
-                    className="text-emerald-100/60 text-sm hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                    className="text-zinc-500 text-sm hover:text-amber-500 transition-colors flex items-center gap-2 group"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="w-1 h-1 rounded-full bg-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
                   </motion.a>
                 </li>
@@ -127,10 +131,10 @@ const Footer = () => {
                 <li key={link.name}>
                   <motion.a 
                     href={link.href}
-                    className="text-emerald-100/60 text-sm hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                    className="text-zinc-500 text-sm hover:text-amber-500 transition-colors flex items-center gap-2 group"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="w-1 h-1 rounded-full bg-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
                   </motion.a>
                 </li>
@@ -141,7 +145,7 @@ const Footer = () => {
           {/* COLUMN 4: STAY CONNECTED */}
           <motion.div variants={itemVariants} className="space-y-6">
             <h3 className="text-white font-semibold tracking-wide">Stay Connected</h3>
-            <p className="text-emerald-100/60 text-sm">
+            <p className="text-zinc-500 text-sm">
               Subscribe to our newsletter for exclusive recipes, offers and updates.
             </p>
             
@@ -150,12 +154,12 @@ const Footer = () => {
                 <input 
                   type="email" 
                   placeholder="Your email address" 
-                  className="w-full bg-black/20 border border-emerald-800/50 rounded-lg py-3 px-4 text-sm text-white placeholder-emerald-100/30 focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-lg py-3 px-4 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 focus:bg-zinc-900/80 transition-all"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="absolute right-1.5 top-1.5 p-1.5 bg-emerald-600 rounded-md text-white hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-900/20"
+                  className="absolute right-1.5 top-1.5 p-1.5 bg-gradient-to-r from-amber-500 to-amber-600 rounded-md text-black hover:to-amber-400 transition-all shadow-lg shadow-amber-900/20"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                     <path d="M5 12h14M12 5l7 7-7 7" />
@@ -163,7 +167,7 @@ const Footer = () => {
                 </motion.button>
               </div>
               
-              <div className="flex items-center gap-2 text-emerald-100/40 text-xs">
+              <div className="flex items-center gap-2 text-zinc-600 text-xs">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -177,15 +181,13 @@ const Footer = () => {
         {/* BOTTOM BAR */}
         <motion.div 
           variants={itemVariants}
-          className="border-t border-emerald-900/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-100/30"
+          className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600"
         >
           <div>
             © 2026 SK Caterings. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-emerald-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-emerald-400 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-emerald-400 transition-colors">Cookie Settings</a>
+            <a href="#" className="hover:text-amber-500 transition-colors">Developed by : Echo Digital Works</a>
           </div>
         </motion.div>
       </motion.div>

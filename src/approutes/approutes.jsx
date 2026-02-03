@@ -13,6 +13,7 @@ import MenuPage from '../pages/menu/MenuPage';
 import ScrollToTop from '../components/ScrollToTop';
 
 
+
 const AppRoutes = () => {
   const location = useLocation();
 
@@ -20,6 +21,7 @@ const AppRoutes = () => {
 
     <>
     <ScrollToTop />
+    
     
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

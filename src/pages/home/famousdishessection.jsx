@@ -1,60 +1,56 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from "react-router-dom";
+
 
 // --- DATA: Food Categories ---
 const categories = [
   {
     id: 1,
-    name: "Royal Biryani",
-    count: "12 Varieties",
-    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&q=80" // Biryani Plate
+    name: "Idly",
+    image: "https://tse3.mm.bing.net/th/id/OIP.xoL1ko1lLJw7Gp3vyIzNhAHaHa?pid=Api&P=0&h=180" // Idly
   },
   {
     id: 2,
-    name: "Gourmet Burgers",
-    count: "8 Varieties",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" // Burger
+    name: "Dosa",
+    image: "https://tse4.mm.bing.net/th/id/OIP.BJwK1TGMGt8oxpDDN14FVwHaHa?pid=Api&P=0&h=180" // 
   },
   {
     id: 3,
-    name: "Tandoori Grills",
-    count: "15 Varieties",
-    image: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=500&q=80" // Chicken/Grill
+    name: "Poori",
+    image: "https://www.awesomecuisine.com/wp-content/uploads/2020/03/poori-masala-kizhangu-585x390.jpg" // Chicken/Grill
   },
   {
     id: 4,
-    name: "Artisan Pizza",
-    count: "10 Varieties",
-    image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500&q=80" // Pizza
+    name: "Chapati",
+    image: "https://www.krumpli.co.uk/wp-content/uploads/2023/05/Homemade-Indian-Chapati-02-1200x1200.jpg" // Pizza
   },
   {
     id: 5,
-    name: "Signature Pasta",
-    count: "6 Varieties",
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&q=80" // Pasta
+    name: "Parotta",
+    image: "https://tse1.mm.bing.net/th/id/OIP.6ELWHztatvJ3B5sW1ehfUgHaEK?pid=Api&P=0&h=180" // Pasta
   },
   {
     id: 6,
-    name: "Exotic Curries",
-    count: "20 Varieties",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=80" // Curry
+    name: "cutlet",
+    image: "https://tse1.mm.bing.net/th/id/OIP.sA6P9T6O3bNUAg9DY4XVzAHaE7?pid=Api&P=0&h=180" // Curry
   },
   {
     id: 7,
-    name: "Premium Steaks",
-    count: "5 Cuts",
-    image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80" // Steak
+    name: "vada",
+    image: "https://tse2.mm.bing.net/th/id/OIP.FdU-BqsXXz1a4ZUx0Xq1OAHaE6?pid=Api&P=0&h=180" // Steak
   },
   {
     id: 8,
-    name: "Luxury Desserts",
-    count: "14 Varieties",
-    image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&q=80" // Dessert
+    name: "kesari",
+    image: "https://www.tastingtable.com/img/gallery/kesari-is-the-indian-dessert-that-shines-bright-from-saffron-upgrade/l-intro-1701376057.jpg" // Dessert
   }
 ];
 
 // --- CARD COMPONENT ---
 const CategoryCard = ({ item, index }) => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -62,6 +58,7 @@ const CategoryCard = ({ item, index }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="flex flex-col items-center group cursor-pointer"
+      onClick={() => navigate("/menu")}
     >
       {/* 1. The Plate Image */}
       <div className="relative w-40 h-40 md:w-56 md:h-56 mb-6">
