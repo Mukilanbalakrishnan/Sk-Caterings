@@ -19,7 +19,7 @@ import Footer from '../../components/Footer';
   menu: {
     breakfast: [
       {
-        image: "/src/assets/weddingbreakfast.png",
+        image: "/assets/weddingbreakfast.png",
         label: "Traditional South Indian Breakfast"
       }
     ],

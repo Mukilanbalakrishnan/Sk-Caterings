@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import logo from "../assets/logo.png";
-import base from "../assets/base.png";
+import logo from "../../public/assets/logo.png";
+import base from "../../public/assets/base.png";
 import EnquiryModal from './EnquiryModal'; 
 
 const navLinks = [

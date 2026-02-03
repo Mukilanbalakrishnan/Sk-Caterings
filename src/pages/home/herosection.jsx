@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import heroVideo from '../../assets/videos/Catering_Advertisement_ATOZO_Maharishi_Caterers_Catering_Video_1080P.mp4'; // UNCOMMENT THIS
+import heroVideo from '../../../public/assets/videos/video.mp4'; // UNCOMMENT THIS
 
 // Animation Variants for Staggered Text
 const containerVariants = {
