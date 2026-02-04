@@ -9,7 +9,7 @@ const services = [
   title: "Royal Weddings",
   description: "We give good food for big weddings. We cook tasty dishes for all wedding functions.",
   image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-  icon: " "
+  iconImage: "assets/icons/weddinicon.png"
 },
 
 {
@@ -17,32 +17,33 @@ const services = [
   title: "Big Office Parties",
   description: "We serve food for office meetings and company parties with clean and proper service.",
   image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-  icon: "🤝"
+  iconImage: "assets/icons/office.png"
 },
 
 {
   id: "03",
-  title: "Live Food Cooking",
-  description: "Our cooks make food in front of people so they can see and eat fresh hot food.",
-  image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-  icon: "🔥"
+  title: "Baby shower",
+  description: "Baby Shower is a small celebration to wish a mother and her baby good health and happiness.",
+  image: "https://m.media-amazon.com/images/I/71IC2lqIgdL._AC_UF1000,1000_QL80_.jpg",
+  iconImage: "assets/icons/baby.png"
 },
 
 {
   id: "04",
-  title: "Home Special Parties",
+  title: "Birthday Parties",
   description: "We give food for small home parties like birthday and anniversary.",
   image: "https://cdn.cdnparenting.com/articles/2018/06/243588019-H-768x525.jpg",
-  icon: "🥂"
+  iconImage: "assets/icons/birthday.png"
 },
 
 {
   id: "05",
-  title: "Catering at Your Place",
-  description: "We come to your place and cook fresh food wherever your event is.",
-  image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
-  icon: "✈️"
+  title: "Family & Small Functions",
+  description: "We provide tasty and traditional food for family functions like pooja, anniversaries, and small gatherings.",
+  image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80",
+  iconImage: "assets/icons/family.png"
 },
+
 
 // ----- NEW MODULES (VERY SIMPLE WORDS) -----
 
@@ -51,7 +52,7 @@ const services = [
   title: "Engagement",
   description: "We give simple and tasty food for engagement function.",
   image: "https://wallpapers.com/images/hd/traditional-beautiful-engagement-couple-ring-7o6kh4dv11dsf0dp.jpg",
-  icon: "💎"
+  iconImage: "assets/icons/engagement.png"
 },
 
 {
@@ -59,7 +60,7 @@ const services = [
   title: "Mehandhi / Sangeet / Haldi",
   description: "We serve snacks, sweets, and special food for these functions.",
   image: "https://i.pinimg.com/originals/59/ac/df/59acdf095cf95f73a00706feef5ad110.jpg",
-  icon: "🌼"
+  iconImage: "assets/icons/mehandhi.png"
 },
 
 {
@@ -67,7 +68,7 @@ const services = [
   title: "Religious Ceremonies",
   description: "We cook clean and pure traditional food for temple and puja events.",
   image: "https://as1.ftcdn.net/v2/jpg/09/18/56/92/1000_F_918569254_c6HPa4lse9ggSM2wwjgoZfM00bdR2obq.jpg",
-  icon: "🛕"
+  iconImage: "assets/icons/relegious.png"
 },
 
 {
@@ -75,7 +76,7 @@ const services = [
   title: "Alumni Meet / Retirement Party",
   description: "We provide good food for old students meet and retirement parties.",
   image: "https://news.temple.edu/sites/news/files/shutterstock_531382432-scaled_0.jpg",
-  icon: "🎓"
+  iconImage: "assets/icons/alumini.png"
 },
 
 {
@@ -83,7 +84,7 @@ const services = [
   title: "House Warming",
   description: "We serve fresh and traditional food for new house opening.",
   image: "https://blog.photoadking.com/wp-content/uploads/2022/12/housewarming-invitation-wording.jpg",
-  icon: "🏠"
+  iconImage: "assets/icons/house.png"
 }
 ];
 
@@ -164,9 +165,17 @@ const SpotlightCard = ({ service, index }) => {
           {/* Content */}
           <div className="relative z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
             {/* Icon */}
-            <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-xl mb-3 backdrop-blur-sm group-hover:bg-amber-500 group-hover:text-black transition-colors duration-300">
-              {service.icon}
-            </div>
+            <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 
+flex items-center justify-center backdrop-blur-sm
+group-hover:bg-amber-500 transition-colors duration-300">
+
+  <img
+    src={service.iconImage}
+    alt={service.title}
+    className="w-8 h-8 object-contain"
+  />
+</div>
+
 
             <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
               {service.title}

@@ -40,9 +40,11 @@ const MagneticButton = ({ children, className }) => {
 };
 
 // --- COMPONENT: SOCIAL TILE ---
-const SocialTile = ({ icon: Icon, label, color, delay }) => (
+const SocialTile = ({ icon: Icon, label, color, delay, href }) => (
   <motion.a
-    href="#"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 0.5 }}
@@ -51,9 +53,12 @@ const SocialTile = ({ icon: Icon, label, color, delay }) => (
   >
     <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${color}`} />
     <Icon className="text-white group-hover:scale-110 transition-transform duration-300 z-10" size={28} />
-    <span className="text-[10px] uppercase tracking-widest text-white/50 mt-2 group-hover:text-white transition-colors z-10">{label}</span>
+    <span className="text-[10px] uppercase tracking-widest text-white/50 mt-2 group-hover:text-white transition-colors z-10">
+      {label}
+    </span>
   </motion.a>
 );
+
 
 const Contact = () => {
   return (
@@ -207,7 +212,7 @@ const Contact = () => {
                <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
                   <div>
                     <h4 className="text-white font-bold text-sm">Main Headquarters</h4>
-                    <p className="text-white/50 text-xs">Anna Nagar, Chennai</p>
+                    <p className="text-white/50 text-xs"> No,50, Nagoji Street, Triplicane, Chennai. Pincode - 600005</p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-amber-500">
                     <ArrowRight size={14} className="-rotate-45" />
@@ -219,12 +224,47 @@ const Contact = () => {
             <div>
                <h4 className="text-white/40 text-xs font-mono uppercase tracking-widest mb-6">Connect Digitally</h4>
                <div className="flex flex-wrap gap-4">
-                  <SocialTile icon={Instagram} label="Insta" color="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500" delay={0.3} />
-                  <SocialTile icon={Facebook} label="Facebook" color="bg-blue-600" delay={0.4} />
-                  <SocialTile icon={MessageCircle} label="WhatsApp" color="bg-green-500" delay={0.5} />
-                  <SocialTile icon={Twitter} label="X" color="bg-white" delay={0.6} />
-                  <SocialTile icon={Mail} label="Mail" color="bg-red-500" delay={0.7} />
-               </div>
+  <SocialTile
+    icon={Instagram}
+    label="Insta"
+    href="https://www.instagram.com/skfoods_catering/"
+    color="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500"
+    delay={0.3}
+  />
+
+  <SocialTile
+    icon={Facebook}
+    label="Facebook"
+    href="https://www.facebook.com/profile.php?id=61586084293076"
+    color="bg-blue-600"
+    delay={0.4}
+  />
+
+  <SocialTile
+    icon={MessageCircle}
+    label="WhatsApp"
+    href="https://wa.me/919514001155"
+    color="bg-green-500"
+    delay={0.5}
+  />
+
+  <SocialTile
+    icon={Twitter}
+    label="X"
+    href="https://twitter.com/"
+    color="bg-white"
+    delay={0.6}
+  />
+
+  <SocialTile
+    icon={Mail}
+    label="Mail"
+    href="mailto:skcatering@gmail.com"
+    color="bg-red-500"
+    delay={0.7}
+  />
+</div>
+
             </div>
 
             {/* DIRECT LINE */}
@@ -239,7 +279,7 @@ const Contact = () => {
                </div>
                <div>
                   <p className="text-amber-500 text-xs font-bold uppercase tracking-wider">Priority Support</p>
-                  <p className="text-white text-2xl font-serif font-bold">+91 98765 43210</p>
+                  <p className="text-white text-2xl font-serif font-bold">+91 95140 01155</p>
                </div>
             </motion.div>
 

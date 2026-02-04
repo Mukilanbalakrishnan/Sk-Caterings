@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- ASSETS ---
@@ -35,6 +35,37 @@ const FallingSpice = ({ src }) => {
 };
 
 const EnquiryModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+  name: "",
+  phone: "",
+  date: "",
+  guests: "",
+  eventType: "",
+  message: ""
+});
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = () => {
+  const text = 
+`New Catering Enquiry
+Name: ${formData.name}
+Phone: ${formData.phone}
+Date: ${formData.date}
+Guests: ${formData.guests}
+Event: ${formData.eventType}
+Message: ${formData.message}`;
+
+  window.open(
+    `https://wa.me/916369194095?text=${encodeURIComponent(text)}`,
+    "_blank"
+  );
+};
+
+
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -55,12 +86,13 @@ const EnquiryModal = ({ isOpen, onClose }) => {
           ))}
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none"
-          >
+  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+  animate={{ opacity: 1, scale: 1, y: 0 }}
+  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+  className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+>
+
             {/* REDUCED SIZE: changed max-w-lg to max-w-md and reduced padding */}
             <div className="bg-white border border-amber-100 w-full max-w-md rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] pointer-events-auto relative">
               
@@ -84,77 +116,118 @@ const EnquiryModal = ({ isOpen, onClose }) => {
                   </p>
                 </div>
 
-                <form className="space-y-3">
+                <form className="space-y-3" onSubmit={handleSubmit}>
+
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
                       <label className="text-[10px] text-amber-700 font-semibold ml-1">Name</label>
-                      <input 
-                        type="text" 
-                        placeholder="John Doe" 
-                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-amber-500 transition-all"
-                      />
+                      <input
+  type="text"
+  name="name"
+  value={formData.name}
+  onChange={handleChange}
+  placeholder="John Doe"
+  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+
+/>
+
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] text-amber-700 font-semibold ml-1">Phone</label>
-                      <input 
-                        type="tel" 
-                        placeholder="+91 98765..." 
-                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-amber-500 transition-all"
-                      />
+                      <input
+  type="tel"
+  name="phone"
+  value={formData.phone}
+  onChange={handleChange}
+  placeholder="+91 98765..."
+   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+/>
+
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
                       <label className="text-[10px] text-amber-700 font-semibold ml-1">Event Date</label>
-                      <input 
-                        type="date" 
-                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-amber-500 transition-all"
-                      />
+                      <input
+  type="date"
+  name="date"
+  value={formData.date}
+  onChange={handleChange}
+   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+/>
+
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] text-amber-700 font-semibold ml-1">Guests</label>
                       <div className="relative">
-                        <select className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-amber-500 transition-all appearance-none">
-                          <option>Select...</option>
-                          <option>50 - 100</option>
-                          <option>100+</option>
-                        </select>
+                        <select
+  name="guests"
+  value={formData.guests}
+  onChange={handleChange}
+   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+>
+  <option value="">Select...</option>
+  <option value="50 - 100">50 - 100</option>
+  <option value="100+">100+</option>
+</select>
+
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-[10px]">▼</div>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[10px] text-amber-700 font-semibold ml-1">Event Type</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {['Wedding', 'Corp', 'Private'].map((type) => (
-                        <label key={type} className="cursor-pointer">
-                          <input type="radio" name="eventType" className="peer sr-only" />
-                          <div className="text-center py-1.5 rounded-md border border-gray-200 bg-gray-50 text-gray-600 text-[11px] peer-checked:bg-amber-600 peer-checked:text-white peer-checked:border-amber-600 transition-all hover:bg-gray-100">
-                            {type}
-                          </div>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
+  <label className="text-[10px] text-amber-700 font-semibold ml-1">
+    Event Type
+  </label>
+  <input
+  type="text"
+  name="eventType"
+  value={formData.eventType}
+  onChange={handleChange}
+  placeholder="Wedding / Birthday / Office Party"
+   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+/>
+
+</div>
+
 
                   <div className="space-y-1">
                     <label className="text-[10px] text-amber-700 font-semibold ml-1">Message</label>
-                    <textarea 
-                      rows="2" 
-                      placeholder="Preferences..." 
-                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-amber-500 transition-all resize-none"
-                    />
+                    <textarea
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  rows="2"
+  placeholder="Preferences..."
+   className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 
+text-sm text-gray-900 placeholder-gray-400 
+focus:outline-none focus:border-amber-500"
+/>
+
                   </div>
 
                   <motion.button
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    className="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold text-base rounded-lg shadow-md mt-2 transition-colors"
-                  >
-                    Send Enquiry
-                  </motion.button>
+  type="submit"
+  whileHover={{ scale: 1.01 }}
+  whileTap={{ scale: 0.99 }}
+  className="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold text-base rounded-lg shadow-md mt-2"
+>
+  Send Enquiry
+</motion.button>
+
+
                 </form>
               </div>
             </div>

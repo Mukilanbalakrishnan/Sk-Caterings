@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
 
 // --- REUSABLE COMPONENTS ---
 
@@ -79,9 +79,9 @@ const ContactSection = () => {
             {/* Contact Details */}
             <div className="space-y-8 mb-12">
               {[
-                { icon: Mail, label: "Email", value: "hello@luxurycatering.com" },
-                { icon: Phone, label: "Phone", value: "+1 (555) 000-1234" },
-                { icon: MapPin, label: "HQ", value: "Beverly Hills, CA 90210" }
+                { icon: Mail, label: "Email", value: "skcateringservice1999@gmail.com" },
+                { icon: Phone, label: "Phone", value: "+91 9514001155" },
+                { icon: MapPin, label: "HQ", value: "No,50, Nagoji Street, Triplicane, Chennai. Pincode - 600005" }
               ].map((item, idx) => (
                 <motion.div 
                   key={idx}
@@ -103,9 +103,9 @@ const ContactSection = () => {
 
             {/* Socials */}
             <div className="flex gap-4">
-              <SocialLink icon={Instagram} href="#" />
+              <SocialLink icon={Instagram} href="https://www.instagram.com/skfoods_catering/" />
               <SocialLink icon={Twitter} href="#" />
-              <SocialLink icon={Linkedin} href="#" />
+              <SocialLink icon={Facebook} href="https://www.facebook.com/profile.php?id=61586084293076" />
             </div>
 
           </div>

@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 // --- DATA ---
 const footerLinks = {
   quickLinks: [
-    { name: "Our Story", href: "#" },
-    { name: "Menus", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Gallery", href: "#" }
+    { name: "Our Story", href: "/about" },
+    { name: "Menus", href: "/menu" },
+    { name: "Services", href: "/services" },
+    { name: "Gallery", href: "/gallery" }
   ],
   customerService: [
     { name: "Contact Us", href: "#" },
