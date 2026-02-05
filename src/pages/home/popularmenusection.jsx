@@ -7,54 +7,54 @@ import { Link } from "react-router-dom";
 const popularMenus = [
   {
     id: 1,
-    title: "The Royal Maharaja",
-    subtitle: "Authentic Indian Feast",
-    price: "Premium",
-    image: "https://images.unsplash.com/photo-1547928576-a4a33237cbc3?w=800&q=80", // Rich Indian food
+    title: "The Kalyana Virundhu",
+    subtitle: "Traditional Vegetarian Feast",
+    price: "Classic",
+    image: "https://b.zmtcdn.com/data/pictures/chains/4/21806294/174239601110d3c147-bb0f-4444-8095-248fdecd00ce.jpeg?fit=around|960:500&crop=960:500;*,*", // Banana Leaf Feast
     items: [
-      "Welcome Drink: Rose Sharbat",
-      "Starters: Paneer Tikka, Hara Bhara Kebab",
-      "Main: Butter Chicken, Dal Makhani",
-      "Breads: Butter Naan, Laccha Paratha",
-      "Rice: Jeera Rice, Veg Pulao",
-      "Dessert: Gulab Jamun, Rasmalai"
+      "Welcome: Panakam & Neer Mor",
+      "Starters: Medhu Vadai, Banana Bajji",
+      "Main: Drumstick Sambar, Vatha Kuzhambu",
+      "Sides: Potato Roast, Aviyal, Kootu",
+      "Rice: Ponni Rice, Curd Rice with Pickle",
+      "Dessert: Sakkarai Pongal, Semiya Payasam"
     ],
-    color: "#451a03", 
-    accent: "#fbbf24" // Amber
+    color: "#14532d", // Dark Green (Banana Leaf)
+    accent: "#fbbf24" // Gold
   },
   {
     id: 2,
-    title: "The Italian Soiree",
-    subtitle: "Tuscany on a Plate",
-    price: "Gold",
-    image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80", // Pasta/Italian
+    title: "The Chettinad Royal",
+    subtitle: "Spicy Karaikudi Delights",
+    price: "Premium",
+    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800&q=80", // Spicy Curry/Chicken
     items: [
-      "Welcome Drink: Sparkling Lemonade",
-      "Starters: Bruschetta, Garlic Bread",
-      "Main: Penne Alfredo, Woodfire Pizza",
-      "Sides: Caesar Salad, Roasted Veggies",
-      "Live Station: Pasta Toss",
-      "Dessert: Tiramisu, Gelato"
+      "Welcome: Nannari Sarbath",
+      "Starters: Chicken 65, Kola Urundai",
+      "Main: Chettinad Chicken, Mutton Chukka",
+      "Breads: Bun Parotta, Veechu Parotta",
+      "Special: Nandu Masala (Crab)",
+      "Dessert: Paal Paniyaram"
     ],
-    color: "#7f1d1d", 
-    accent: "#f87171" // Red
+    color: "#7f1d1d", // Deep Red (Chilli)
+    accent: "#f87171" // Light Red
   },
   {
     id: 3,
-    title: "The Fusion Fiesta",
-    subtitle: "Global Flavors United",
-    price: "Platinum",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80", // Fusion/Thai
+    title: "The Madurai Majesty",
+    subtitle: "Soul Food of the South",
+    price: "Gold",
+    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80", // Biryani
     items: [
-      "Welcome Drink: Mojito Mocktail",
-      "Starters: Tacos, BBQ Wings",
-      "Main: Thai Curry, Jasmine Rice",
-      "Grill: Live Satay Station",
-      "Sides: Som Tam Salad",
-      "Dessert: Cheesecake, Brownies"
+      "Welcome: Madurai Jigarthanda",
+      "Starters: Mutton Kari Dosa, Eeral Varuval",
+      "Main: Seeraga Samba Mutton Biryani",
+      "Sides: Ennai Kathirikai, Onion Raitha",
+      "Gravy: Empty Salna (Chicken/Mutton)",
+      "Dessert: Wheat Halwa (Tirunelveli style)"
     ],
-    color: "#064e3b", 
-    accent: "#34d399" // Emerald
+    color: "#7c2d12", // Rusty Orange/Brown
+    accent: "#fdba74" // Orange
   }
 ];
 
