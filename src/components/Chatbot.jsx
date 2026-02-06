@@ -2,23 +2,27 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- IMAGES ---
-const sleepingKumba = "https://cdn.iconscout.com/icon/premium/png-256-thumb/dussehra-sticker-icon-svg-download-png-1716146.png"; 
+const sleepingKumba = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6LLF9xlSNNHCgFAhNfESp3YoZzmU3jM7Qw&s"; 
 const awakeKumba = "https://cdn.iconscout.com/icon/premium/png-256-thumb/hungry-ravana-sticker-icon-svg-download-png-1716143.png"; 
 
 // --- DATA ---
 const faqData = [
-  { question: "What is the price per plate?", answer: "Our packages start from ₹350 for Veg and ₹550 for Non-Veg. It varies based on the menu selection." },
+  { 
+  question: "Do you offer both Buffet and Leaf service?", 
+  answer: "Yes, we specialize in both traditional Banana Leaf (Ilai Sappadu) service and modern luxury buffet setups depending on your event requirements." 
+},
   { question: "Do you do destination weddings?", answer: "Yes! We specialize in destination catering across South India. We bring our own kitchen setup." },
   { question: "Minimum order quantity?", answer: "We cater to events with a minimum of 50 guests." },
   { question: "Can I customize the menu?", answer: "Absolutely! You can mix and match items from our Royal, Gold, and Platinum packages." },
-  { question: "How do I book?", answer: "You can book a tasting session by clicking the 'Order Online' button or calling us at +91-9876543210." }
+  { question: "How do I book?", answer: "You can book a tasting session by clicking the 'Order Online' button or calling us at +91-9514001155." }
 ];
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // Track hover state
   const [messages, setMessages] = useState([
-    { type: 'bot', text: "Vanakkam! I am Kumba. Hungry? Ask me anything about our feast!" }
+    { type: 'bot', text: "Vanakkam! I am Ghatotkacha, your Feast Guide. Ask me anything about our royal menu!" }
+
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
@@ -58,7 +62,7 @@ const Chatbot = () => {
                 <img src={awakeKumba} alt="Kumba Bot" className="w-full h-full object-contain" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-sm">Kumba Bot</h3>
+                <h3 className="text-white font-bold text-sm">Ghato Bot</h3>
                 <p className="text-orange-100 text-[10px]">Online & Hungry</p>
               </div>
               <button 
@@ -118,7 +122,7 @@ const Chatbot = () => {
             exit={{ opacity: 0, y: 10, x: -10 }}
             className="absolute right-0 bottom-full mb-2 bg-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
           >
-            Chat with Kumba!
+            Chat with Ghato!
             {/* Tiny arrow at the bottom of tooltip */}
             <div className="absolute top-full right-6 -mt-1 border-8 border-transparent border-t-orange-600"></div>
           </motion.span>

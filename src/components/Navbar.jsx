@@ -115,9 +115,8 @@ const Navbar = () => {
   animate={{ 
     rotateY: [0, 90, 0], 
     filter: [
-      "drop-shadow(0 0 6px rgba(251,191,36,0.5))",
-      "drop-shadow(0 0 18px rgba(251,191,36,0.9))",
-      "drop-shadow(0 0 6px rgba(251,191,36,0.5))",
+      "drop-shadow(0 0 2px rgba(251,191,36,0.3))", // Dim state (Reduced from 6px/0.5)
+      "drop-shadow(0 0 8px rgba(251,191,36,0.8))", // Bright state (Reduced from 18px/0.9)
     ]
   }}
   transition={{ 
@@ -127,18 +126,19 @@ const Navbar = () => {
       ease: "linear"
     },
     filter: {
-      duration: 2,
+      duration: 0.5,         // Faster duration creates the "blink" speed
       repeat: Infinity,
+      repeatType: "reverse", // Reverses back and forth (0 -> 1 -> 0)
       ease: "easeInOut"
     }
   }}
   style={{ 
-    backfaceVisibility: "visible",   // 👈 prevents inversion look
+    backfaceVisibility: "visible", 
     translateY: -6
   }}
   whileHover={{ 
     scale: 1.1,
-    filter: "drop-shadow(0 0 26px rgba(251,191,36,1))"
+    filter: "drop-shadow(0 0 15px rgba(251,191,36,0.8))" // Slightly reduced hover glow too
   }}
 />
 
