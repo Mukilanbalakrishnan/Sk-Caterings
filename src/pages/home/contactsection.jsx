@@ -79,7 +79,7 @@ const ContactSection = () => {
             {/* Contact Details */}
             <div className="space-y-8 mb-12">
               {[
-                { icon: Mail, label: "Email", value: "skcateringservice1999@gmail.com" },
+                { icon: Mail, label: "Email", value: "skcateringservices99@gmail.com" },
                 { icon: Phone, label: "Phone", value: "+91 9514001155" },
                 { icon: MapPin, label: "HQ", value: "No,50, Nagoji Street, Triplicane, Chennai. Pincode - 600005" }
               ].map((item, idx) => (

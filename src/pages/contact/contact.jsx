@@ -259,7 +259,7 @@ const Contact = () => {
   <SocialTile
     icon={Mail}
     label="Mail"
-    href="mailto:skcatering@gmail.com"
+    href="mailto:skcateringservices99@gmail.com"
     color="bg-red-500"
     delay={0.7}
   />
