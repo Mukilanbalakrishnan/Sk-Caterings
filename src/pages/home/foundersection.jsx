@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 // --- ASSETS ---
 // Swapped for a professional "Founder" style portrait
-const founderImage = "public/assets/Founder_Pic.png";
+const founderImage = "/public/assets/Founder_Pic.png";
 
 
 // --- REUSABLE COMPONENTS ---
