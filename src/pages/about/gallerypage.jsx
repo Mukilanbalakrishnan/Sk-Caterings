@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
 
 // --- DATA ---
 const categories = ["All", "Weddings", "Culinary", "Corporate", "Decor"];
@@ -9,38 +11,38 @@ const galleryData = [
   // --- WEDDINGS ---
   { id: 1, type: "image", category: "Weddings", src: "https://images.unsplash.com/photo-1519225469958-1934935f30d9?w=800&q=80", title: "Royal Mandap", size: "tall" },
   { id: 6, type: "image", category: "Weddings", src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", title: "Bridal Entry", size: "wide" },
-  { 
-    id: 9, 
-    type: "video", 
-    category: "Weddings", 
-    src: "https://assets.mixkit.co/videos/preview/mixkit-marriage-proposal-in-the-forest-4267-large.mp4", 
-    poster: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80", 
-    title: "Cinematic Moments", 
-    size: "wide" 
+  {
+    id: 9,
+    type: "video",
+    category: "Weddings",
+    src: "https://assets.mixkit.co/videos/preview/mixkit-marriage-proposal-in-the-forest-4267-large.mp4",
+    poster: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80",
+    title: "Cinematic Moments",
+    size: "wide"
   },
 
   // --- CULINARY ---
-  { 
-    id: 2, 
-    type: "video", 
-    category: "Culinary", 
-    src: "https://assets.mixkit.co/videos/preview/mixkit-chef-putting-the-final-touch-on-a-dish-4099-large.mp4", 
+  {
+    id: 2,
+    type: "video",
+    category: "Culinary",
+    src: "https://assets.mixkit.co/videos/preview/mixkit-chef-putting-the-final-touch-on-a-dish-4099-large.mp4",
     poster: "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80",
-    title: "Chef's Signature", 
-    size: "wide" 
+    title: "Chef's Signature",
+    size: "wide"
   },
   { id: 5, type: "image", category: "Culinary", src: "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?w=800&q=80", title: "Plating Art", size: "normal" },
   { id: 8, type: "image", category: "Culinary", src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80", title: "Live Station", size: "normal" },
 
   // --- CORPORATE ---
-  { 
-    id: 4, 
-    type: "video", 
-    category: "Corporate", 
+  {
+    id: 4,
+    type: "video",
+    category: "Corporate",
     src: "https://assets.mixkit.co/videos/preview/mixkit-people-in-a-meeting-talking-3444-large.mp4",
     poster: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-    title: "Gala Highlights", 
-    size: "tall" 
+    title: "Gala Highlights",
+    size: "tall"
   },
 
   // --- DECOR ---
@@ -76,7 +78,7 @@ const TiltCard = ({ item, onClick, onHoverStart, onHoverEnd, isMobile }) => {
     if (!isMobile) {
       onHoverStart();
       if (item.type === 'video' && videoRef.current) {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
       }
     }
   };
@@ -114,7 +116,7 @@ const TiltCard = ({ item, onClick, onHoverStart, onHoverEnd, isMobile }) => {
       <div style={{ transform: "translateZ(40px)" }} className="absolute inset-0 z-10 pointer-events-none">
         {item.type === 'video' && (
           <div className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-0 transition-transform duration-300">
-             <span className="text-white text-xs">▶</span>
+            <span className="text-white text-xs">▶</span>
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
@@ -136,7 +138,7 @@ const TiltCard = ({ item, onClick, onHoverStart, onHoverEnd, isMobile }) => {
 
 // --- SECTION HEADER COMPONENT ---
 const SectionHeader = ({ title, icon }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
@@ -156,7 +158,7 @@ const GalleryPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [cursorVariant, setCursorVariant] = useState("default");
-  
+
   // Cursor logic
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -176,10 +178,11 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden cursor-none selection:bg-amber-500 selection:text-black">
-      
+      <Navbar />
+
       {/* Back Button */}
       <Link to="/about" className="fixed top-8 left-8 z-50 pointer-events-auto">
-        <motion.button 
+        <motion.button
           whileHover={{ scale: 1.1, x: -5 }}
           className="flex items-center gap-2 text-white/70 hover:text-amber-500 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
           onMouseEnter={() => !isMobile && setCursorVariant("hover")}
@@ -196,9 +199,9 @@ const GalleryPage = () => {
           style={{ x: cursorX, y: cursorY }}
           animate={cursorVariant === "hover" ? { width: 60, height: 60, backgroundColor: "rgba(245, 158, 11, 0.9)", borderColor: "transparent" } : { width: 16, height: 16 }}
         >
-           <AnimatePresence>
-            {cursorVariant === "hover" && <motion.span initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="text-black text-[10px] font-bold">OPEN</motion.span>}
-           </AnimatePresence>
+          <AnimatePresence>
+            {cursorVariant === "hover" && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-black text-[10px] font-bold">OPEN</motion.span>}
+          </AnimatePresence>
         </motion.div>
       )}
 
@@ -231,7 +234,7 @@ const GalleryPage = () => {
       {/* --- SPLIT CONTENT GRID --- */}
       <div className="container mx-auto px-6 pb-32 min-h-[500px]">
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={activeFilter}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -270,6 +273,7 @@ const GalleryPage = () => {
             )}
           </motion.div>
         </AnimatePresence>
+
       </div>
 
       {/* Lightbox */}
@@ -294,6 +298,7 @@ const GalleryPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <Footer />
     </div>
   );
 };

@@ -3,13 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import logo from "../../public/assets/logo.png";
 import base from "../../public/assets/base.png";
-import EnquiryModal from './EnquiryModal'; 
+import EnquiryModal from './EnquiryModal';
 
 const navLinks = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
   { title: "Services", path: "/services" },
   { title: "Menu", path: "/menu" },
+  { title: "Gallery", path: "/gallery" },
   { title: "Contact", path: "/contact" },
 ];
 
@@ -22,14 +23,14 @@ const Navbar = () => {
   const location = useLocation();
   const { scrollYProgress } = useScroll();
   const navRef = useRef(null);
-  
+
 
   // Scroll Animations
   const navBlur = useTransform(scrollYProgress, [0, 0.05], ["blur(0px)", "blur(10px)"]);
-  const navHeight = useTransform(scrollYProgress, [0, 0.05], ["7rem", "6rem"]); 
+  const navHeight = useTransform(scrollYProgress, [0, 0.05], ["7rem", "6rem"]);
   const navShadow = useTransform(
-    scrollYProgress, 
-    [0, 0.05], 
+    scrollYProgress,
+    [0, 0.05],
     ["0 4px 20px rgba(0,0,0,0)", "0 10px 40px rgba(0,0,0,0.5)"]
   );
 
@@ -75,28 +76,28 @@ const Navbar = () => {
         }}
       >
         <div className="container mx-auto px-6 md:px-12 flex flex-row justify-between items-center h-full relative">
-          
+
           {/* --- LEFT SIDE: LOGO STACK --- */}
           <Link to="/" className="flex items-center gap-3 group relative h-full">
-            <div 
+            <div
               className="relative flex items-center justify-center"
-              style={{ 
-                width: 112, 
-                height: 112, 
+              style={{
+                width: 112,
+                height: 112,
                 perspective: 1000 // Essential for 3D rotation
               }}
             >
-              
+
               {/* 1. BASE LOGO (Static + Pulse Glow) */}
-              <motion.img 
-                src={base} 
-                alt="Base Logo" 
+              <motion.img
+                src={base}
+                alt="Base Logo"
                 className="absolute inset-0 m-auto w-[112px] h-[112px] object-contain opacity-80"
 
-                animate={{ 
+                animate={{
                   filter: [
-                    "drop-shadow(0 0 5px rgba(251, 191, 36, 0.3))", 
-                    "drop-shadow(0 0 15px rgba(251, 191, 36, 0.6))", 
+                    "drop-shadow(0 0 5px rgba(251, 191, 36, 0.3))",
+                    "drop-shadow(0 0 15px rgba(251, 191, 36, 0.6))",
                     "drop-shadow(0 0 5px rgba(251, 191, 36, 0.3))"
                   ]
                 }}
@@ -108,39 +109,39 @@ const Navbar = () => {
               />
 
               {/* 2. TOP LOGO (Spins Left-to-Right / Y-Axis) */}
-              <motion.img 
-  src={logo} 
-  alt="SK Caterings Logo" 
-  className="relative z-10 w-24 h-24 md:w-28 md:h-28 object-contain"
-  animate={{ 
-    rotateY: [0, 90, 0], 
-    filter: [
-      "drop-shadow(0 0 2px rgba(251,191,36,0.3))", // Dim state (Reduced from 6px/0.5)
-      "drop-shadow(0 0 8px rgba(251,191,36,0.8))", // Bright state (Reduced from 18px/0.9)
-    ]
-  }}
-  transition={{ 
-    rotateY: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "linear"
-    },
-    filter: {
-      duration: 0.5,         // Faster duration creates the "blink" speed
-      repeat: Infinity,
-      repeatType: "reverse", // Reverses back and forth (0 -> 1 -> 0)
-      ease: "easeInOut"
-    }
-  }}
-  style={{ 
-    backfaceVisibility: "visible", 
-    translateY: -6
-  }}
-  whileHover={{ 
-    scale: 1.1,
-    filter: "drop-shadow(0 0 15px rgba(251,191,36,0.8))" // Slightly reduced hover glow too
-  }}
-/>
+              <motion.img
+                src={logo}
+                alt="SK Caterings Logo"
+                className="relative z-10 w-24 h-24 md:w-28 md:h-28 object-contain"
+                animate={{
+                  rotateY: [0, 90, 0],
+                  filter: [
+                    "drop-shadow(0 0 2px rgba(251,191,36,0.3))", // Dim state (Reduced from 6px/0.5)
+                    "drop-shadow(0 0 8px rgba(251,191,36,0.8))", // Bright state (Reduced from 18px/0.9)
+                  ]
+                }}
+                transition={{
+                  rotateY: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear"
+                  },
+                  filter: {
+                    duration: 0.5,         // Faster duration creates the "blink" speed
+                    repeat: Infinity,
+                    repeatType: "reverse", // Reverses back and forth (0 -> 1 -> 0)
+                    ease: "easeInOut"
+                  }
+                }}
+                style={{
+                  backfaceVisibility: "visible",
+                  translateY: -6
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  filter: "drop-shadow(0 0 15px rgba(251,191,36,0.8))" // Slightly reduced hover glow too
+                }}
+              />
 
             </div>
           </Link>
@@ -172,7 +173,7 @@ const Navbar = () => {
 
           {/* --- RIGHT SIDE: BUTTONS --- */}
           <div className="flex items-center gap-4">
-            
+
             {/* Desktop Enquiry Button */}
             <div className="hidden md:block">
               <motion.button
@@ -194,9 +195,9 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Hamburger Button */}
-            <motion.button 
+            <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white focus:outline-none z-50 relative w-10 h-10 flex items-center justify-center ml-auto" 
+              className="md:hidden text-white focus:outline-none z-50 relative w-10 h-10 flex items-center justify-center ml-auto"
               whileTap={{ scale: 0.9 }}
             >
               <div className="w-8 h-8 relative">
@@ -236,7 +237,7 @@ const Navbar = () => {
               <div className="relative z-10 h-full flex flex-col p-8">
                 <div className="flex justify-between items-center mb-12">
                   <span className="text-yellow-500 font-bold tracking-tighter text-xl">NAVIGATION</span>
-                  <button 
+                  <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="p-2 text-white hover:text-yellow-500"
                   >
@@ -254,9 +255,8 @@ const Navbar = () => {
                     >
                       <Link
                         to={link.path}
-                        className={`text-2xl font-medium transition-colors ${
-                          activeLink === link.path ? "text-yellow-500" : "text-white"
-                        }`}
+                        className={`text-2xl font-medium transition-colors ${activeLink === link.path ? "text-yellow-500" : "text-white"
+                          }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {link.title}
@@ -265,9 +265,9 @@ const Navbar = () => {
                   ))}
                 </nav>
 
-                <motion.div 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
                   className="mt-auto pb-10"
                 >

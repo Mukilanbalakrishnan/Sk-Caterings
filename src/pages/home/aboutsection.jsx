@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 // --- IMAGES ---
-const chefImage = "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80";
+const chefImage = "https://5.imimg.com/data5/SELLER/Default/2024/9/449821039/XJ/BE/GT/40158524/wedding-catering-services-1000x1000.jpg";
 
 const AboutSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -28,17 +28,17 @@ const AboutSection = () => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       ref={containerRef}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       className="relative w-full py-24 md:py-40 bg-white overflow-hidden flex items-center justify-center text-black"
     >
-      
+
       {/* --- UNIQUE BACKGROUND: MORPHING BLOB --- */}
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           borderRadius: ["40% 60% 70% 30% / 40% 50% 60% 50%", "60% 40% 30% 70% / 50% 30% 70% 60%", "40% 60% 70% 30% / 40% 50% 60% 50%"],
           rotate: 360
         }}
@@ -50,7 +50,7 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
 
           {/* === LEFT SIDE: MAGNETIC IMAGE CONTAINER === */}
-          <motion.div 
+          <motion.div
             className="w-full md:w-1/2 relative group"
             onMouseMove={handleMouseMove}
             onMouseLeave={resetMouse}
@@ -58,25 +58,25 @@ const AboutSection = () => {
             style={{ perspective: 1000 }}
           >
             {/* Animated Background Geometric Plate */}
-            <motion.div 
+            <motion.div
               animate={{ rotate: isHovered ? 90 : 0, scale: isHovered ? 1.1 : 1 }}
               className="absolute -top-10 -left-10 w-40 h-40 border-l-2 border-t-2 border-orange-200 rounded-tl-[60px] pointer-events-none"
             />
 
-            <motion.div 
+            <motion.div
               style={{ rotateX: mouseY, rotateY: mouseX, transformStyle: "preserve-3d" }}
               className="relative z-10 rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] cursor-none"
             >
               <div className="relative w-full h-[450px] md:h-[600px] overflow-hidden">
-                <motion.img 
-                  src={chefImage} 
-                  alt="About SK Caterings" 
+                <motion.img
+                  src={chefImage}
+                  alt="About SK Caterings"
                   className="w-full h-full object-cover scale-110"
                   animate={{ scale: isHovered ? 1.2 : 1.1 }}
                   transition={{ duration: 0.7 }}
                   onLoad={() => setImageLoaded(true)}
                 />
-                
+
                 {/* Floating "Garnish" Particles on hover */}
                 {isHovered && [...Array(6)].map((_, i) => (
                   <motion.div
@@ -93,7 +93,7 @@ const AboutSection = () => {
               </div>
 
               {/* Dynamic Badge */}
-              <motion.div 
+              <motion.div
                 animate={{ y: isHovered ? -10 : 0 }}
                 className="absolute bottom-8 left-8 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4"
               >
@@ -117,7 +117,7 @@ const AboutSection = () => {
               <h4 className="text-orange-600 font-bold uppercase tracking-[0.3em] text-xs">The Culinary Heritage</h4>
             </motion.div>
 
-            <motion.h2 
+            <motion.h2
               className="text-5xl md:text-7xl font-serif text-black mb-8 leading-[1.1]"
             >
               Crafting <br />
@@ -126,7 +126,7 @@ const AboutSection = () => {
 
             {/* Shimmering Divider */}
             <div className="relative w-full h-[1px] bg-gray-100 mb-10 overflow-hidden">
-              <motion.div 
+              <motion.div
                 animate={{ x: ['-100%', '200%'] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-transparent via-orange-400 to-transparent"
@@ -139,25 +139,25 @@ const AboutSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-gray-600 text-xl leading-relaxed font-light italic">
-  "At SK Caterings, we believe food is not just to eat — it is a feeling, an 
-  <span className="text-orange-600 font-medium"> அனுபவம் (anubavam)</span>."
-</p>
+                "At SK Caterings, we believe food is not just to eat — it is a feeling, an
+                <span className="text-orange-600 font-medium"> அனுபவம் (anubavam)</span>."
+              </p>
 
-<p className="mt-6 text-gray-800 text-lg leading-relaxed">
-  With over <span className="font-bold text-black border-b-2 border-orange-300">25+ years of experience </span> 
-  in the catering industry, we have been proudly serving unforgettable food experiences since 
-  <span className="text-black font-bold"> 1999</span>.
-  <br /><br />
-  For us, catering is not just about cooking — it is about understanding your event, 
-  your taste, and your <span className="font-semibold text-orange-600">மகிழ்ச்சி (happiness)</span>.  
-  From choosing fresh local ingredients to elegant final presentation, 
-  every detail is handled with care so your special day feels truly perfect.
-</p>
+              <p className="mt-6 text-gray-800 text-lg leading-relaxed">
+                With over <span className="font-bold text-black border-b-2 border-orange-300">25+ years of experience </span>
+                in the catering industry, we have been proudly serving unforgettable food experiences since
+                <span className="text-black font-bold"> 1999</span>.
+                <br /><br />
+                For us, catering is not just about cooking — it is about understanding your event,
+                your taste, and your <span className="font-semibold text-orange-600">மகிழ்ச்சி (happiness)</span>.
+                From choosing fresh local ingredients to elegant final presentation,
+                every detail is handled with care so your special day feels truly perfect.
+              </p>
 
 
             </motion.div>
 
-            
+
           </motion.div>
 
         </div>

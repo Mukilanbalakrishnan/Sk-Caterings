@@ -3,15 +3,15 @@ import { motion } from 'framer-motion';
 
 // --- ASSETS ---
 // Swapped for a professional "Founder" style portrait
-const founderImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80";
+const founderImage = "public/assets/Founder_Pic.png";
 
 
 // --- REUSABLE COMPONENTS ---
 
 // 1. Animated Constellation Badge
-const ConstellationBadge = () => {  
+const ConstellationBadge = () => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ scale: 0, rotate: -180 }}
       animate={{ scale: 1, rotate: 0 }}
       transition={{ duration: 1, type: "spring" }}
@@ -29,20 +29,20 @@ const ConstellationBadge = () => {
             <stop offset="100%" stopColor="#f97316" />
           </linearGradient>
         </defs>
-        
+
         {/* Animated Circle */}
-        <motion.circle 
-          cx="50" cy="50" r="42" 
-          fill="none" 
-          stroke="url(#gradient)" 
-          strokeWidth="0.5" 
+        <motion.circle
+          cx="50" cy="50" r="42"
+          fill="none"
+          stroke="url(#gradient)"
+          strokeWidth="0.5"
           strokeDasharray="5,5"
           initial={{ strokeDashoffset: 100, rotate: 0 }}
           animate={{ strokeDashoffset: 0, rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="opacity-50"
         />
-        
+
         {/* Text Path */}
         <path id="circlePath" d="M 50, 50 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="none" />
         <text className="font-serif text-[8px] uppercase tracking-[0.3em]">
@@ -58,7 +58,7 @@ const ConstellationBadge = () => {
           </textPath>
         </text>
       </svg>
-      
+
       {/* Constellation Points */}
       {[0, 72, 144, 216, 288].map((angle, i) => (
         <motion.div
@@ -79,10 +79,10 @@ const ConstellationBadge = () => {
           />
         </motion.div>
       ))}
-      
+
       {/* Central Ember */}
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 1.1, 1],
           boxShadow: [
             "0 0 20px rgba(249, 115, 22, 0.5)",
@@ -123,7 +123,7 @@ const FounderSection = () => {
 
   return (
     <section className="relative w-full min-h-screen py-20 md:py-32 bg-gradient-to-br from-[#0f0a0a] via-[#1a0f0f] to-[#0f0a0a] overflow-hidden">
-      
+
       {/* Animated Background Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 50 }).map((_, i) => (
@@ -147,7 +147,7 @@ const FounderSection = () => {
           />
         ))}
       </div>
-      
+
       {/* Animated Gradient Orbs */}
       <motion.div
         animate={{
@@ -157,7 +157,7 @@ const FounderSection = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/5 to-amber-400/3 blur-[120px] rounded-full"
       />
-      
+
       <motion.div
         animate={{
           x: [0, -30, 0],
@@ -168,10 +168,11 @@ const FounderSection = () => {
       />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
+
 
           {/* LEFT COLUMN */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -179,13 +180,13 @@ const FounderSection = () => {
             className="w-full lg:w-1/2 relative z-20"
           >
             <motion.div variants={itemVariants} className="mb-12">
-              <motion.h4 
+              <motion.h4
                 whileHover={{ scale: 1.05 }}
                 className="inline-block font-mono text-amber-300 text-lg mb-4 tracking-[0.5em] bg-gradient-to-r from-amber-900/20 to-orange-900/20 px-6 py-2 rounded-full backdrop-blur-sm border border-amber-700/30"
               >
                 ✦ FOUNDER & CEO ✦
               </motion.h4>
-              
+
               <div className="relative">
                 <h2 className="font-serif text-5xl md:text-7xl text-white mb-6 leading-tight">
                   {"Meet The".split("").map((char, i) => (
@@ -200,7 +201,7 @@ const FounderSection = () => {
                     </motion.span>
                   ))}
                   <br />
-                  <motion.span 
+                  <motion.span
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6, type: "spring" }}
@@ -209,7 +210,7 @@ const FounderSection = () => {
                     Visionary
                   </motion.span>
                 </h2>
-                
+
                 {/* Animated Underline */}
                 <motion.div
                   initial={{ width: 0 }}
@@ -221,36 +222,36 @@ const FounderSection = () => {
             </motion.div>
 
             {/* Vision Text Block */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="mt-8 max-w-xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 rounded-2xl p-8"
             >
               <p className="text-gray-300 text-lg leading-relaxed">
-  For us, building SK Caterings is not just about business — it is about love for food, 
-  respect for people, and years of hard work. Every step of this journey has been guided by 
-  honesty, dedication, and a deep understanding of what makes an event special.
-  <br /><br />
-  We believe good food creates memories and brings people together — 
-  <span className="text-orange-400 font-medium"> உணவு என்பது உறவு (Food is a bond)</span>. 
-  With this belief, we continue to serve every client with care, consistency, and pride, 
-  shaping a future rooted in tradition and trust.
-</p>
+                For us, building SK Caterings is not just about business — it is about love for food,
+                respect for people, and years of hard work. Every step of this journey has been guided by
+                honesty, dedication, and a deep understanding of what makes an event special.
+                <br /><br />
+                We believe good food creates memories and brings people together —
+                <span className="text-orange-400 font-medium"> உணவு என்பது உறவு (Food is a bond)</span>.
+                With this belief, we continue to serve every client with care, consistency, and pride,
+                shaping a future rooted in tradition and trust.
+              </p>
 
             </motion.div>
           </motion.div>
 
           {/* RIGHT COLUMN */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 relative"
           >
-            
+
             {/* Constellation Badge */}
             <ConstellationBadge />
-            
+
             {/* Main Image Container */}
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -259,10 +260,10 @@ const FounderSection = () => {
             >
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-70" />
-              
+
               {/* Animated Image */}
-              <motion.img 
-                src={founderImage} 
+              <motion.img
+                src={founderImage}
                 alt="Founder Portrait"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.1 }}
@@ -270,7 +271,7 @@ const FounderSection = () => {
                 transition={{ duration: 1.5 }}
                 style={{ filter: "grayscale(20%)" }}
               />
-              
+
               {/* Text Overlay */}
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 pointer-events-none">
                 <motion.div
@@ -278,17 +279,17 @@ const FounderSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <h3 className="text-white text-3xl font-serif mb-2">Sebastian K.</h3>
+                  <h3 className="text-white text-3xl font-serif mb-2">Govindarajalu P.</h3>
                   <p className="text-amber-300 text-lg mb-2">Founder & CEO</p>
                   <p className="text-gray-300 text-sm">
-                    15+ years of industry leadership
+                    25+ years of industry leadership
                   </p>
                 </motion.div>
               </div>
-              
+
               {/* Animated Glow */}
               <motion.div
-                animate={{ 
+                animate={{
                   opacity: [0.1, 0.3, 0.1],
                   scale: [1, 1.1, 1]
                 }}
