@@ -120,7 +120,7 @@ const ContactSection = () => {
                
                {/* 1. THE IFRAME */}
                <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30868.738984779364!2d77.83066769810031!3d11.363383040685056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96191aa62873b%3A0xcbcc6272306596d2!2sTiruchengode%2C%20Tamil%20Nadu%20637211!5e0!3m2!1sen!2sin!4v1770107730862!5m2!1sen!2sin"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.687108743851!2d80.27703609999999!3d13.055577499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52690039ee1f0b%3A0x3b2954354487255a!2sSK%20Catering%20Services!5e0!3m2!1sen!2sin!4v1770911135278!5m2!1sen!2sin"
     width="100%"
   height="100%"
   style={{

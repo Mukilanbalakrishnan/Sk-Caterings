@@ -194,7 +194,7 @@ const Contact = () => {
             >
                {/* Grayscale Map */}
                <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968459391!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1622646244672!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.687108743851!2d80.27703609999999!3d13.055577499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52690039ee1f0b%3A0x3b2954354487255a!2sSK%20Catering%20Services!5e0!3m2!1sen!2sin!4v1770911135278!5m2!1sen!2sin" 
                 className="w-full h-full opacity-60 grayscale invert contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700"
                 style={{ border: 0 }}
                 loading="lazy"
